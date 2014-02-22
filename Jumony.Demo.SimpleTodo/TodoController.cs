@@ -58,7 +58,7 @@ namespace Jumony.Demo.SimpleTodo
     public ActionResult Modify( int taskId )
     {
 
-      return View( "modify", dbUtility.T( "SELECT ID, Title, Completed FROM Tasks WHERE ID = {0}", taskId ).ExecuteEntities<Task>() );
+      return View( "modify", dbUtility.T( "SELECT ID, Title, Completed FROM Tasks WHERE ID = {0}", taskId ).ExecuteEntity<Task>() );
 
     }
 

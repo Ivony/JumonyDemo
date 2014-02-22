@@ -72,25 +72,33 @@
             提供 HTTP 客户端缓存的一些帮助功能
             </summary>
         </member>
-        <member name="M:Ivony.Web.CacheHelper.IsNotModified(System.Web.HttpContextBase,System.String,Ivony.Web.RawResponse@)">
+        <member name="M:Ivony.Web.CacheHelper.IsNotModified(System.Web.HttpContextBase,System.String)">
             <summary>
-            检查客户端的 ETag 是否已经过期，若未过期则发出 HTTP 304
+            检查客户端的 ETag 是否已经过期，若未过期则直接发出一个 HTTP 304 响应
             </summary>
             <param name="context">HTTP 上下文</param>
             <param name="etag">用于与客户端 ETag 比较的，生成的请求内容的 ETag</param>
-            <returns>是否已经发出 HTTP 304</returns>
+            <returns>ETag 是否未过期</returns>
+        </member>
+        <member name="M:Ivony.Web.CacheHelper.IsNotModified(System.Web.HttpContextBase,System.String,Ivony.Web.RawResponse@)">
+            <summary>
+            检查客户端的 ETag 是否已经过期，若未过期则产生一个 HTTP 304 响应
+            </summary>
+            <param name="context">HTTP 上下文</param>
+            <param name="etag">用于与客户端 ETag 比较的，生成的请求内容的 ETag</param>
+            <param name="response">需要发出的 304 响应信息</param>
+            <returns>ETag 是否未过期</returns>
         </member>
         <member name="M:Ivony.Web.CacheHelper.NotModified(System.Web.HttpContextBase)">
             <summary>
-            输出 304 通知浏览器此页未被修改
+            发送一个 304 通知浏览器此页未被修改
             </summary>
-            <param name="context"></param>
+            <param name="context">当前 HTTP 请求上下文</param>
         </member>
         <member name="M:Ivony.Web.CacheHelper.NotModified">
             <summary>
             产生一个  HTTP 304 响应通知浏览器此页未被修改
             </summary>
-            <param name="context"></param>
         </member>
         <member name="M:Ivony.Web.CacheHelper.CreateETagFromFile(System.String)">
             <summary>
@@ -1292,6 +1300,11 @@
             是否启用内存缓存
             </summary>
         </member>
+        <member name="T:Ivony.Web.VirtualPathHelper">
+            <summary>
+            为常见的虚拟路径操作提供额外的实用工具方法。
+            </summary>
+        </member>
         <member name="M:Ivony.Web.VirtualPathHelper.FallbackSearch(System.String,System.String[])">
             <summary>
             在指定虚拟路径上溯搜索指定文件名的文件
@@ -1315,6 +1328,13 @@
             </summary>
             <param name="virtualPath">要获取父级目录的虚拟路径</param>
             <returns>父级目录，若当前路径无法上溯，则返回 null</returns>
+        </member>
+        <member name="M:Ivony.Web.VirtualPathHelper.VirtualPathFormatError(System.String)">
+            <summary>
+            此方法仅供系统调用
+            </summary>
+            <param name="paramName">参数名称</param>
+            <returns></returns>
         </member>
         <member name="T:Ivony.Web.WebServiceLocator">
             <summary>

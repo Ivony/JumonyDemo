@@ -6,6 +6,8 @@
   {
     AreaRegistration.RegisterAllAreas();
 
+    SimpleRouteTable.DebugMode = true;
+
   }
 
   void Application_End( object sender, EventArgs e )
