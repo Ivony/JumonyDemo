@@ -4,6 +4,104 @@
         <name>Ivony.Html</name>
     </assembly>
     <members>
+        <member name="T:Ivony.Html.CssSelector">
+            <summary>
+            实现 ICssSelector 接口
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.ICssSelector">
+            <summary>
+            定义 CSS 选择器
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.ISelector">
+            <summary>
+            定义 HTML 元素选择器的抽象
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.ISelector.IsEligible(Ivony.Html.IHtmlElement)">
+            <summary>
+            判断一个元素是否符合选择器要求
+            </summary>
+            <param name="element">要判断的元素</param>
+            <returns>是否符合要求</returns>
+        </member>
+        <member name="P:Ivony.Html.ICssSelector.Specificity">
+            <summary>
+            CSS 选择器特异性
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.CssSelector.#ctor(Ivony.Html.ISelector,Ivony.Html.CssSpecificity)">
+            <summary>
+            创建 CssSelector 对象
+            </summary>
+            <param name="selector">选择器</param>
+            <param name="specificity">选择器特异性</param>
+        </member>
+        <member name="M:Ivony.Html.CssSelector.IsEligible(Ivony.Html.IHtmlElement)">
+            <summary>
+            元素是否满足选择器要求
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Ivony.Html.CssSelector.Specificity">
+            <summary>
+            选择器特异性
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.CssSelector.Selector">
+            <summary>
+            选择器
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.CssSpecificity">
+            <summary>
+            定义 CSS 选择器的特异性
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.CssSpecificity.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            创建 CssSpecificity 对象
+            </summary>
+            <param name="a">特异性 a 值</param>
+            <param name="b">特异性 b 值</param>
+            <param name="c">特异性 c 值</param>
+        </member>
+        <member name="M:Ivony.Html.CssSpecificity.Equals(Ivony.Html.CssSpecificity)">
+            <summary>
+            检查两个 CSS 特异性是否一致
+            </summary>
+            <param name="other">要检查的另一个特异性</param>
+            <returns>是否一致</returns>
+        </member>
+        <member name="M:Ivony.Html.CssSpecificity.Equals(System.Object)">
+            <summary>
+            重写 Equals 方法实现特异性的比较
+            </summary>
+            <param name="obj">要比较的特异性对象</param>
+            <returns>两个对象是否相等</returns>
+        </member>
+        <member name="M:Ivony.Html.CssSpecificity.GetHashCode">
+            <summary>
+            重写 GetHashCode 方法，获取哈希值
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Ivony.Html.CssSpecificity.CompareTo(System.Object)">
+            <summary>
+            比较两个 CSS 选择器特异性之间的优先级
+            </summary>
+            <param name="obj">要进行比较的特异性</param>
+            <returns>比较结果</returns>
+        </member>
+        <member name="M:Ivony.Html.CssSpecificity.CompareTo(Ivony.Html.CssSpecificity)">
+            <summary>
+            比较两个 CSS 选择器特异性之间的优先级
+            </summary>
+            <param name="other">要进行比较的特异性</param>
+            <returns>比较结果</returns>
+        </member>
         <member name="T:Ivony.Html.CssPropertyParser">
             <summary>
             CSS 样式解析器
@@ -96,6 +194,11 @@
             </summary>
             <param name="property">要检查的 CSS 样式属性设置</param>
             <returns>是否合法有效</returns>
+        </member>
+        <member name="T:Ivony.Html.CssStyleShorthandRuleCollection">
+            <summary>
+            定义 CSS 样式缩写规则容器
+            </summary>
         </member>
         <member name="T:Ivony.Html.CssStyle">
             <summary>
@@ -920,6 +1023,13 @@
             </summary>
             <param name="document">要执行转换的文档</param>
             <param name="resolveInternalReference">是否转换页内 uri</param>
+        </member>
+        <member name="M:Ivony.Html.DocumentExtensions.ElementTextMode(Ivony.Html.IHtmlNode)">
+            <summary>
+            获取当前节点的文本模式
+            </summary>
+            <param name="node">要获取文本模式的节点</param>
+            <returns>节点当前适用的文本模式</returns>
         </member>
         <member name="M:Ivony.Html.DocumentExtensions.GenerateCodeMethod(Ivony.Html.IHtmlDocument,System.String)">
             <summary>
@@ -2761,38 +2871,26 @@
             <returns>找到的捕获</returns>
             <remarks>这个扩展方法用于从一个大的捕获组的匹配中分离出子捕获组的匹配。</remarks>
         </member>
-        <member name="T:Ivony.Html.CssCacheableSelector">
+        <member name="T:Ivony.Html.CacheableSelector">
             <summary>
             可以对筛选结果进行缓存的 CSS 选择器
             </summary>
         </member>
-        <member name="T:Ivony.Html.ICssSelector">
-            <summary>
-            代表一个 CSS 选择器的抽象
-            </summary>
-        </member>
-        <member name="M:Ivony.Html.ICssSelector.IsEligible(Ivony.Html.IHtmlElement)">
-            <summary>
-            判断一个元素是否符合选择器要求
-            </summary>
-            <param name="element">要判断的元素</param>
-            <returns>是否符合要求</returns>
-        </member>
-        <member name="M:Ivony.Html.CssCacheableSelector.IsEligible(Ivony.Html.IHtmlElement)">
+        <member name="M:Ivony.Html.CacheableSelector.IsEligible(Ivony.Html.IHtmlElement)">
             <summary>
             检查元素是否符合选择器要求（此方法会自动缓存结果）
             </summary>
             <param name="element">要检查的元素</param>
             <returns>是否符合选择器的要求</returns>
         </member>
-        <member name="M:Ivony.Html.CssCacheableSelector.IsEligibleCore(Ivony.Html.IHtmlElement)">
+        <member name="M:Ivony.Html.CacheableSelector.IsEligibleCore(Ivony.Html.IHtmlElement)">
             <summary>
             派生类实现此方法检查元素是否符合选择器要求
             </summary>
             <param name="element"></param>
             <returns></returns>
         </member>
-        <member name="M:Ivony.Html.CssCacheableSelector.CreateCacheableWrapper(Ivony.Html.ICssSelector)">
+        <member name="M:Ivony.Html.CacheableSelector.CreateCacheableWrapper(Ivony.Html.ISelector)">
             <summary>
             创建现有 CSS 选择器的自动缓存包装
             </summary>
@@ -2808,14 +2906,14 @@
             简单的说只有一个元素选择器所构成的层叠选择器，其元素选择器是位于右边的。
             </remarks>
         </member>
-        <member name="M:Ivony.Html.CssCasecadingSelector.#ctor(Ivony.Html.CssRelativeSelector,Ivony.Html.ICssSelector)">
+        <member name="M:Ivony.Html.CssCasecadingSelector.#ctor(Ivony.Html.CssRelativeSelector,Ivony.Html.ISelector)">
             <summary>
             创建 CSS 层叠选择器对象
             </summary>
             <param name="relativeSelector">关系选择器</param>
             <param name="lastSelector">附加的最后一个选择器</param>
         </member>
-        <member name="M:Ivony.Html.CssCasecadingSelector.Create(Ivony.Html.ICssSelector,System.Char,Ivony.Html.ICssSelector)">
+        <member name="M:Ivony.Html.CssCasecadingSelector.Create(Ivony.Html.ISelector,System.Char,Ivony.Html.ISelector)">
             <summary>
             创建层叠选择器实例
             </summary>
@@ -2839,7 +2937,7 @@
             <param name="right">右关系选择器</param>
             <returns>合并后的关系选择器</returns>
         </member>
-        <member name="M:Ivony.Html.CssCasecadingSelector.CreateRelativeSelector(Ivony.Html.ICssSelector,System.Char)">
+        <member name="M:Ivony.Html.CssCasecadingSelector.CreateRelativeSelector(Ivony.Html.ISelector,System.Char)">
             <summary>
             创建关系选择器
             </summary>
@@ -2860,7 +2958,7 @@
             </summary>
             <returns>表示当前选择器的表达式</returns>
         </member>
-        <member name="M:Ivony.Html.CssCasecadingSelector.Create(Ivony.Html.CssRelativeSelector,Ivony.Html.ICssSelector)">
+        <member name="M:Ivony.Html.CssCasecadingSelector.Create(Ivony.Html.CssRelativeSelector,Ivony.Html.ISelector)">
             <summary>
             创建层叠选择器
             </summary>
@@ -2987,7 +3085,7 @@
             <param name="enumerator">用于读取选择器表达式的枚举器</param>
             <returns>选择器对象</returns>
         </member>
-        <member name="M:Ivony.Html.CssParser.CreateCasecadingSelector(Ivony.Html.ICssSelector,System.Char,Ivony.Html.CssElementSelector)">
+        <member name="M:Ivony.Html.CssParser.CreateCasecadingSelector(Ivony.Html.ISelector,System.Char,Ivony.Html.CssElementSelector)">
             <summary>
             创建层叠选择器
             </summary>
@@ -3076,12 +3174,12 @@
             <param name="enumerator"></param>
             <returns></returns>
         </member>
-        <member name="T:Ivony.Html.CssSelector">
+        <member name="T:Ivony.Html.SelectorExtensions">
             <summary>
             提供一系列静态和扩展方法来辅助使用 CSS 选择器。
             </summary>
         </member>
-        <member name="M:Ivony.Html.CssSelector.Filter(Ivony.Html.ICssSelector,System.Collections.Generic.IEnumerable{Ivony.Html.IHtmlElement})">
+        <member name="M:Ivony.Html.SelectorExtensions.Filter(Ivony.Html.ISelector,System.Collections.Generic.IEnumerable{Ivony.Html.IHtmlElement})">
             <summary>
             使用选择器从元素集中筛选出符合选择器要求的元素
             </summary>
@@ -3089,7 +3187,7 @@
             <param name="source">源元素集</param>
             <returns>筛选结果</returns>
         </member>
-        <member name="M:Ivony.Html.CssSelector.FilterBy(System.Collections.Generic.IEnumerable{Ivony.Html.IHtmlElement},Ivony.Html.ICssSelector)">
+        <member name="M:Ivony.Html.SelectorExtensions.FilterBy(System.Collections.Generic.IEnumerable{Ivony.Html.IHtmlElement},Ivony.Html.ISelector)">
             <summary>
             使用选择器从元素集中筛选出符合选择器要求的元素
             </summary>
@@ -3097,7 +3195,7 @@
             <param name="selector">选择器</param>
             <returns>筛选结果</returns>
         </member>
-        <member name="M:Ivony.Html.CssSelector.FilterBy(System.Collections.Generic.IEnumerable{Ivony.Html.IHtmlElement},System.String)">
+        <member name="M:Ivony.Html.SelectorExtensions.FilterBy(System.Collections.Generic.IEnumerable{Ivony.Html.IHtmlElement},System.String)">
             <summary>
             使用选择器从元素集中筛选出符合选择器要求的元素
             </summary>
@@ -3105,7 +3203,7 @@
             <param name="selector">选择器</param>
             <returns>筛选结果</returns>
         </member>
-        <member name="M:Ivony.Html.CssSelector.IsEligibleBuffered(Ivony.Html.ICssSelector,Ivony.Html.IHtmlElement)">
+        <member name="M:Ivony.Html.SelectorExtensions.IsEligibleBuffered(Ivony.Html.ISelector,Ivony.Html.IHtmlElement)">
             <summary>
             检查元素是否符合指定选择器要求，并缓存结果于元素当前文档版本
             </summary>
@@ -3202,7 +3300,7 @@
             CSS 关系选择器基类
             </summary>
         </member>
-        <member name="M:Ivony.Html.CssRelativeSelector.#ctor(Ivony.Html.ICssSelector)">
+        <member name="M:Ivony.Html.CssRelativeSelector.#ctor(Ivony.Html.ISelector)">
             <summary>
             创建 CssRelativeSelector 对象
             </summary>
@@ -3215,7 +3313,7 @@
             <param name="element">要检验的元素</param>
             <returns>是否符合选择器</returns>
         </member>
-        <member name="M:Ivony.Html.CssRelativeSelector.IsEligible(Ivony.Html.ICssSelector,Ivony.Html.IHtmlElement)">
+        <member name="M:Ivony.Html.CssRelativeSelector.IsEligible(Ivony.Html.ISelector,Ivony.Html.IHtmlElement)">
             <summary>
             检查元素是否符合选择器
             </summary>

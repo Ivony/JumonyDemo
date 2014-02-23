@@ -4,6 +4,40 @@
         <name>Ivony.Html.Web</name>
     </assembly>
     <members>
+        <member name="T:Ivony.Html.Web.DefaultProviders">
+            <summary>
+            提供默认的 HTML 提供程序
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.DefaultProviders.#ctor">
+            <summary>
+            初始化 DefaultProviders 对象
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.DefaultProviders.GetContentServices(System.String)">
+            <summary>
+            获取默认的内容服务
+            </summary>
+            <param name="virtualPath">要加载内容的虚拟路径</param>
+            <returns>默认的内容服务列表</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.DefaultProviders.GetParser(System.String)">
+            <summary>
+            获取默认的 HTML 解析器实例
+            </summary>
+            <param name="virtualPath">要解析的 HTML 文档虚拟路径</param>
+            <returns>默认的 HTML 解析器</returns>
+        </member>
+        <member name="P:Ivony.Html.Web.DefaultProviders.StaticFileContentProvider">
+            <summary>
+            静态 HTML 文件加载提供程序实例
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.DefaultProviders.WebFormPageContentProvider">
+            <summary>
+            ASP.NET WebForm 文件加载提供程序实例
+            </summary>
+        </member>
         <member name="T:Ivony.Html.Web.HtmlBuildProvider">
             <summary>
             将 HTML 文件编译成 IHtmlDocumentProvider 对象的 BuildProvider

@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{157C4483-5593-400D-8F2C-87745AE46704}</ProjectGuid>
+    <ProjectGuid>{257A9440-F263-46A2-9C9E-8F7724927694}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Jumony.Demo.HelpCenter</RootNamespace>
-    <AssemblyName>Jumony.Demo.HelpCenter</AssemblyName>
+    <RootNamespace>Jumony.Demo.DomExplorer</RootNamespace>
+    <AssemblyName>Jumony.Demo.DomExplorer</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,23 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DbUtility.v3">
-      <HintPath>..\packages\DbUtility3.3.1.0.1-beta\lib\net45\DbUtility.v3.dll</HintPath>
-    </Reference>
-    <Reference Include="Ivony.Core, Version=2.0.5161.26613, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Ivony.Core">
       <HintPath>..\packages\Ivony.Core.1.1.0\lib\Ivony.Core.dll</HintPath>
     </Reference>
     <Reference Include="Ivony.Html, Version=3.0.5167.43016, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\JumonyCore.3.0.7.1\lib\Ivony.Html.dll</HintPath>
     </Reference>
-    <Reference Include="Ivony.Html.Binding, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Ivony.Html.Binding">
       <HintPath>..\packages\JumonyModels.2.0.3.0\lib\Ivony.Html.Binding.dll</HintPath>
     </Reference>
-    <Reference Include="Ivony.Html.Forms, Version=2.0.5166.26071, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Ivony.Html.Forms">
       <HintPath>..\packages\JumonyModels.2.0.3.0\lib\Ivony.Html.Forms.dll</HintPath>
     </Reference>
     <Reference Include="Ivony.Html.Parser, Version=3.0.5167.43019, Culture=neutral, processorArchitecture=MSIL">
@@ -65,8 +59,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\JumonyForMVC.3.1.5.2-alpha\lib\Ivony.Html.Web.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="Ivony.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Ivony.Web">
       <HintPath>..\packages\WebUtility.1.1.1\lib\Ivony.Web.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -109,11 +102,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HelpAreaRegistration.cs" />
-    <Compile Include="HelpController.cs" />
-    <Compile Include="HelpLink.cs" />
-    <Compile Include="HelpTopic.cs" />
+    <Compile Include="CacheProvider.cs" />
+    <Compile Include="DomTreeController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DomExplorerRegistration.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

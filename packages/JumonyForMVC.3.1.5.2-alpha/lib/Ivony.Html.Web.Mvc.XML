@@ -301,6 +301,11 @@
             重写 ProcessScope 方法，重定向到被包装的 Handler
             </summary>
         </member>
+        <member name="T:Ivony.Html.Web.IViewFilterProvider">
+            <summary>
+            定义视图筛选器提供程序
+            </summary>
+        </member>
         <member name="M:Ivony.Html.Web.IViewFilterProvider.GetFilters(System.String)">
             <summary>
             获取指定虚拟路径所使用的视图筛选器
@@ -1108,6 +1113,15 @@
             <param name="valueProvider">提供值的 ValueProvider 实例</param>
             <returns>返回表单，便于链式调用</returns>
         </member>
+        <member name="M:Ivony.Html.Web.MvcFormExtensions.ShowErrorMessage(Ivony.Html.Forms.HtmlForm,System.Web.Mvc.ModelStateDictionary,System.Func{Ivony.Html.Forms.IHtmlInputControl,Ivony.Html.IHtmlElement})">
+            <summary>
+            尝试在表单上显示模型验证失败信息
+            </summary>
+            <param name="form">要显示错误信息的表单</param>
+            <param name="modelStates">模型状态信息</param>
+            <param name="inputControlFinder">提供一个方法，通过输入控件查找要显示错误信息的位置</param>
+            <returns>是否有任何错误信息可以显示</returns>
+        </member>
         <member name="T:Ivony.Html.Web.MvcFormValidator">
             <summary>
             配合 ASP.NET MVC 验证模型使用的表单验证器
@@ -1139,7 +1153,7 @@
             <summary>
             尝试显示错误信息
             </summary>
-            <returns></returns>
+            <returns>是否有任何错误信息显示</returns>
         </member>
         <member name="T:Ivony.Html.Web.MvcFieldValidator">
             <summary>
