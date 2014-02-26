@@ -21,7 +21,7 @@ website.publishproj
     <SourceWebVirtualPath>/WebSite</SourceWebVirtualPath>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <SourceWebProject>http://localhost:25147</SourceWebProject>
-    <SourceWebMetabasePath>/IISExpress/7.5/LM/W3SVC/17/ROOT</SourceWebMetabasePath>
+    <SourceWebMetabasePath>/IISExpress/7.5/LM/W3SVC/60/ROOT</SourceWebMetabasePath>
   </PropertyGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -42,6 +42,10 @@ website.publishproj
     </AssemblyAttributes>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Jumony.Demo.DomExplorer\Jumony.Demo.DomExplorer.csproj">
+      <Project>{257A9440-F263-46A2-9C9E-8F7724927694}</Project>
+      <Name>Jumony.Demo.DomExplorer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Jumony.Demo.HelpCenter\Jumony.Demo.HelpCenter.csproj">
       <Project>{157C4483-5593-400D-8F2C-87745AE46704}</Project>
       <Name>Jumony.Demo.HelpCenter</Name>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>JumonyForMVC</id>
+    <version>3.1.5.3-alpha</version>
+    <title>Jumony for MVC</title>
+    <authors>Ivony</authors>
+    <owners>Ivony</owners>
+    <licenseUrl>http://jumony.codeplex.com/license</licenseUrl>
+    <projectUrl>http://jumony.codeplex.com/</projectUrl>
+    <iconUrl>http://pic.cnblogs.com/avatar/a14218.jpg</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Jumony for MVC</description>
+    <releaseNotes />
+    <copyright />
+    <language />
+    <dependencies>
+      <group targetFramework=".NETFramework4.0">
+        <dependency id="WebUtility" version="[1.1, 1.2)" />
+        <dependency id="JumonyCore" version="[3.0.7, 3.1)" />
+        <dependency id="JumonyModels" version="[2.0.3.1, 2.1)" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
