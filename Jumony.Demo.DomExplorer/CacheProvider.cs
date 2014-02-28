@@ -27,7 +27,7 @@ namespace Jumony.Demo.DomExplorer
 
     private class MyCachePolicy : StandardCachePolicy
     {
-      public MyCachePolicy( HttpContextBase context, CacheToken cacheToken, ICachePolicyProvider provider ) : base( context, cacheToken, provider, TimeSpan.FromDays( 1 ), true, "~/StaticCaches", true ) { }
+      public MyCachePolicy( HttpContextBase context, CacheToken cacheToken, ICachePolicyProvider provider ) : base( context, cacheToken, provider, TimeSpan.FromDays( 1 ), true ) { }
 
       public override void ApplyClientCachePolicy()
       {

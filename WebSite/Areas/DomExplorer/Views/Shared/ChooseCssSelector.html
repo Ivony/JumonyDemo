@@ -11,8 +11,7 @@
   <form class="cssSelector" action="Default" controller inherits="*">
     <div style="float: left;">
       <label>
-        <binding key="SelectorExpression" attr="value"></binding>
-        <input name="selector" size="28" id="selectorInput" onblur="showTips()" onfocus="this.style.backgroundImage='';" />
+        <input name="selector" size="28" id="selectorInput" onblur="showTips()" onfocus="this.style.backgroundImage='';" value="{binding key=SelectorExpression}" />
       </label>
       <input type="submit" value="显示选择器结果" />
     </div>

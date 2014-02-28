@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jumony.Demo.HelpCenter", "J
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jumony.Demo.SimpleTodo", "Jumony.Demo.SimpleTodo\Jumony.Demo.SimpleTodo.csproj", "{25E8565E-39C3-44B0-923F-A991CD94EE49}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSite(3)", "http://localhost:25147", "{EF588224-E40E-4A96-B650-1FD19836FEED}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSite", "http://localhost:25147", "{EF588224-E40E-4A96-B650-1FD19836FEED}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
@@ -31,28 +31,6 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSite(3)", "http://localh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jumony.Demo.DomExplorer", "Jumony.Demo.DomExplorer\Jumony.Demo.DomExplorer.csproj", "{257A9440-F263-46A2-9C9E-8F7724927694}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Test(1)", "http://localhost:3969", "{4C3F26F6-15B9-4C72-9AC9-D2A33DB93C4B}"
-	ProjectSection(WebsiteProperties) = preProject
-		UseIISExpress = "true"
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_3969"
-		Debug.AspNetCompiler.PhysicalPath = "..\..\Visual Studio 2013\WebSites\Test\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_3969\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_3969"
-		Release.AspNetCompiler.PhysicalPath = "..\..\Visual Studio 2013\WebSites\Test\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_3969\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "..\..\Visual Studio 2013\WebSites\Test\"
-		DefaultWebSiteLanguage = "Visual C#"
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,10 +53,6 @@ Global
 		{257A9440-F263-46A2-9C9E-8F7724927694}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{257A9440-F263-46A2-9C9E-8F7724927694}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{257A9440-F263-46A2-9C9E-8F7724927694}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4C3F26F6-15B9-4C72-9AC9-D2A33DB93C4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4C3F26F6-15B9-4C72-9AC9-D2A33DB93C4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4C3F26F6-15B9-4C72-9AC9-D2A33DB93C4B}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{4C3F26F6-15B9-4C72-9AC9-D2A33DB93C4B}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
