@@ -42,9 +42,9 @@ website.publishproj
     </AssemblyAttributes>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Jumony.Demo.DomExplorer\Jumony.Demo.DomExplorer.csproj">
+    <ProjectReference Include="..\Jumony.Demo.DomViewer\Jumony.Demo.DomViewer.csproj">
       <Project>{257A9440-F263-46A2-9C9E-8F7724927694}</Project>
-      <Name>Jumony.Demo.DomExplorer</Name>
+      <Name>Jumony.Demo.DomViewer</Name>
     </ProjectReference>
     <ProjectReference Include="..\Jumony.Demo.HelpCenter\Jumony.Demo.HelpCenter.csproj">
       <Project>{157C4483-5593-400D-8F2C-87745AE46704}</Project>
