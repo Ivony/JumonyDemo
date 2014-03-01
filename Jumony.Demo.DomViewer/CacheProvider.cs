@@ -9,7 +9,7 @@ using Ivony.Web;
 
 
 
-namespace Jumony.Demo.DomExplorer
+namespace Jumony.Demo.DomViewer
 {
   class CacheProvider : IMvcCachePolicyProvider
   {

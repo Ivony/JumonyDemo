@@ -11,7 +11,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSite", "http://localhost
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
-		ProjectReferences = "{257a9440-f263-46a2-9c9e-8f7724927694}|Jumony.Demo.DomExplorer.dll;{157c4483-5593-400d-8f2c-87745ae46704}|Jumony.Demo.HelpCenter.dll;{25e8565e-39c3-44b0-923f-a991cd94ee49}|Jumony.Demo.SimpleTodo.dll;"
+		ProjectReferences = "{157c4483-5593-400d-8f2c-87745ae46704}|Jumony.Demo.HelpCenter.dll;{25e8565e-39c3-44b0-923f-a991cd94ee49}|Jumony.Demo.SimpleTodo.dll;{257a9440-f263-46a2-9c9e-8f7724927694}|Jumony.Demo.DomViewer.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_25147"
 		Debug.AspNetCompiler.PhysicalPath = "WebSite\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_25147\"
@@ -29,7 +29,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WebSite", "http://localhost
 		SlnRelativePath = "WebSite\"
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jumony.Demo.DomExplorer", "Jumony.Demo.DomExplorer\Jumony.Demo.DomExplorer.csproj", "{257A9440-F263-46A2-9C9E-8F7724927694}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jumony.Demo.DomViewer", "Jumony.Demo.DomViewer\Jumony.Demo.DomViewer.csproj", "{257A9440-F263-46A2-9C9E-8F7724927694}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

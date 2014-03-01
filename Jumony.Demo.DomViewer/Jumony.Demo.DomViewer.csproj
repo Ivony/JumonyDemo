@@ -7,8 +7,8 @@
     <ProjectGuid>{257A9440-F263-46A2-9C9E-8F7724927694}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Jumony.Demo.DomExplorer</RootNamespace>
-    <AssemblyName>Jumony.Demo.DomExplorer</AssemblyName>
+    <RootNamespace>Jumony.Demo.DomViewer</RootNamespace>
+    <AssemblyName>Jumony.Demo.DomViewer</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -110,7 +110,6 @@
     <Compile Include="DomExplorerRegistration.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

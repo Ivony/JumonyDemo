@@ -32,25 +32,12 @@ namespace Jumony.Demo.HelpCenter
         return RedirectToAction( "Entry", new { path = helpEntriesVirtualPath } );
 
 
-      
       ViewBag.Parents = GetParents( path ).Select( GetTopic ).NotNull().Reverse().ToArray();
       ViewBag.Current = GetTopic( path );
       ViewBag.Childs = GetChilds( path ).Select( GetTopic ).NotNull().ToArray();
 
       return View( GetDocumentPath( path ), "frame" );
     }
-
-    private string GetDocumentPath( string path )
-    {
-
-      if ( path.EndsWith( "/" ) )
-        return path + "index.html";
-
-      else
-        return path;
-
-    }
-
 
     private const string navigationCacheKey = "Navigation";
 
@@ -75,10 +62,7 @@ namespace Jumony.Demo.HelpCenter
         CacheDependency dependency;
         IHtmlDocument document;
 
-        if ( path.EndsWith( "/" ) )
-          document = HtmlServices.LoadDocument( path + "index.html", out dependency );
-        else
-          document = HtmlServices.LoadDocument( path, out dependency );
+        document = HtmlServices.LoadDocument( GetDocumentPath( path ), out dependency );
 
         if ( document == null )
           return null;
@@ -102,9 +86,25 @@ namespace Jumony.Demo.HelpCenter
       return topic;
     }
 
+    private static string GetDocumentPath( string path )
+    {
+      if ( path.EndsWith( "/" ) )
+      {
+
+        var _path = VirtualPathUtility.RemoveTrailingSlash( path ) + ".html";
+        if ( VirtualPathProvider.FileExists( _path ) )
+          return _path;
+
+        _path = path + "_.html";
+        if ( VirtualPathProvider.FileExists( _path ) )
+          return _path;
+      }
+
+      return path;
+    }
+
     private IEnumerable<string> GetParents( string path )
     {
-
       while ( !path.EqualsIgnoreCase( helpEntriesVirtualPath ) )
       {
         path = VirtualPathHelper.GetParentDirectory( path );
@@ -113,14 +113,27 @@ namespace Jumony.Demo.HelpCenter
     }
 
 
+
+
+    public static VirtualPathProvider VirtualPathProvider
+    {
+      get { return HostingEnvironment.VirtualPathProvider; }
+    }
+
     public IEnumerable<string> GetChilds( string path )
     {
 
-      if ( path.EndsWith( "/" ) )
+      var directory = path;
+
+      if ( !path.EndsWith( "/" ) )
+        directory = path.Remove( path.Length - VirtualPathUtility.GetExtension( path ).Length ) + "/";
+
+
+      if ( VirtualPathProvider.DirectoryExists( directory ) )
       {
-        return HostingEnvironment.VirtualPathProvider.GetDirectory( path ).Children
-          .Cast<VirtualFileBase>().Select( file => VirtualPathUtility.ToAppRelative( file.VirtualPath ) )
-          .Where( p => p.EndsWith( "/" ) || p.EndsWith( ".html" ) && !p.EndsWith( "index.html" ) ).ToArray();
+        return VirtualPathProvider.GetDirectory( directory ).Files
+          .Cast<VirtualFile>().Select( file => VirtualPathUtility.ToAppRelative( file.VirtualPath ) )
+          .Where( p => p.EndsWith( ".html" ) && !p.EndsWith( "_.html" ) ).ToArray();
       }
 
       else

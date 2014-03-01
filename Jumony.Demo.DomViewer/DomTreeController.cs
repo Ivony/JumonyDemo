@@ -13,7 +13,7 @@ using System.Web.Security;
 
 
 
-namespace Jumony.Demo.DomExplorer
+namespace Jumony.Demo.DomViewer
 {
 
   /// <summary>

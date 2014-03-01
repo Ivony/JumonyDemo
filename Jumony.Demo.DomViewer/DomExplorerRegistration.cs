@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Ivony.Html.Web;
 
-namespace Jumony.Demo.DomExplorer
+namespace Jumony.Demo.DomViewer
 {
   public class DomExplorerRegistration : AreaRegistration
   {
 
     public override string AreaName
     {
-      get { return "DomExplorer"; }
+      get { return "DomViewer"; }
     }
 
     public override void RegisterArea( AreaRegistrationContext context )

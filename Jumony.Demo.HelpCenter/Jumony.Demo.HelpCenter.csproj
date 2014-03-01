@@ -111,12 +111,10 @@
   <ItemGroup>
     <Compile Include="HelpAreaRegistration.cs" />
     <Compile Include="HelpController.cs" />
-    <Compile Include="HelpLink.cs" />
     <Compile Include="HelpTopic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
