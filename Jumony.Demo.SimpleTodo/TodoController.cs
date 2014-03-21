@@ -8,6 +8,7 @@ using Ivony.Html;
 using Ivony.Html.Web;
 using Ivony.Data;
 using Ivony.Web;
+using System.Threading.Tasks;
 
 namespace Jumony.Demo.SimpleTodo
 {
@@ -19,58 +20,58 @@ namespace Jumony.Demo.SimpleTodo
 
     private SqlDbUtility dbUtility = SqlDbUtility.Create( "Database" );
 
-    public ActionResult Index()
+    public async Task<ActionResult> Index()
     {
-      return View( "index", dbUtility.T( "SELECT ID, Title, Completed FROM Tasks" ).ExecuteEntities<Task>() );
+      return View( "index", await dbUtility.T( "SELECT ID, Title, Completed FROM Tasks" ).ExecuteEntitiesAsync<TodoTask>() );
     }
 
 
-    public ActionResult Add( string title )
+    public async Task<ActionResult> Add( string title )
     {
 
-      dbUtility.T( "INSERT Tasks ( Title, Completed ) VALUES ( {...} )", title, false ).ExecuteNonQuery();
+      await dbUtility.T( "INSERT Tasks ( Title, Completed ) VALUES ( {...} )", title, false ).ExecuteNonQueryAsync();
 
       return RedirectToAction( "Index" );
     }
 
-    public ActionResult Complete( int taskId )
+    public async Task<ActionResult> Complete( int taskId )
     {
-      dbUtility.T( "UPDATE Tasks SET Completed = 1 WHERE ID = {0}", taskId ).ExecuteNonQuery();
+      await dbUtility.T( "UPDATE Tasks SET Completed = 1 WHERE ID = {0}", taskId ).ExecuteNonQueryAsync();
 
       return RedirectToAction( "Index" );
     }
 
-    public ActionResult Revert( int taskId )
+    public async Task<ActionResult> Revert( int taskId )
     {
-      dbUtility.T( "UPDATE Tasks SET Completed = 0 WHERE ID = {0}", taskId ).ExecuteNonQuery();
+      await dbUtility.T( "UPDATE Tasks SET Completed = 0 WHERE ID = {0}", taskId ).ExecuteNonQueryAsync();
 
       return RedirectToAction( "Index" );
     }
 
-    public ActionResult Remove( int taskId )
+    public async Task<ActionResult> Remove( int taskId )
     {
-      dbUtility.T( "DELETE Tasks WHERE ID = {0}", taskId ).ExecuteNonQuery();
+      await dbUtility.T( "DELETE Tasks WHERE ID = {0}", taskId ).ExecuteNonQueryAsync();
 
       return RedirectToAction( "Index" );
     }
 
     [HttpGet]
-    public ActionResult Modify( int taskId )
+    public async Task<ActionResult> Modify( int taskId )
     {
 
-      return View( "modify", dbUtility.T( "SELECT ID, Title, Completed FROM Tasks WHERE ID = {0}", taskId ).ExecuteEntity<Task>() );
+      return View( "modify", await dbUtility.T( "SELECT ID, Title, Completed FROM Tasks WHERE ID = {0}", taskId ).ExecuteEntityAsync<TodoTask>() );
 
     }
 
     [HttpPost]
-    public ActionResult Modify( int taskId, string title )
+    public async Task<ActionResult> Modify( int taskId, string title )
     {
 
       if ( !ViewData.ModelState.IsValid )
         return View( "Index" );
 
 
-      dbUtility.T( "UPDATE Tasks SET Title = {1} WHERE ID = {0}", taskId, title ).ExecuteNonQuery();
+      await dbUtility.T( "UPDATE Tasks SET Title = {1} WHERE ID = {0}", taskId, title ).ExecuteNonQueryAsync();
 
       return RedirectToAction( "Index" );
     }
