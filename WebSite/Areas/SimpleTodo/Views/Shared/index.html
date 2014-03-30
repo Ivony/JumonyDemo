@@ -15,13 +15,13 @@
         <div class="box todos">
           <h2 class="box">待办事项</h2>
           <ul>
-            <li datacontext="{Binding}">
-              <span binding-class="{Binding path=Completed, value=finished}"><binding path="Title">标题</binding></span>
+            <li datacontext="{eval}">
+              <span binding-class="{eval path=Completed, value=finished}"><eval path="Title">标题</eval></span>
               &nbsp;
-                <a action="complete" binding-visible="{Binding path=Completed, value=false, alternativevalue=true}" _taskid="{Binding path=ID}">完成</a>
-              <a action="revert" binding-visible="{Binding path=Completed}" _taskid="{Binding path=ID}">恢复</a> , 
-                <a action="modify" _taskid="{Binding path=ID}">修改</a>,
-                <a action="remove" _taskid="{Binding path=ID}" onclick="return confirm('删除以后不能恢复的，确定？')">删除</a>
+              <a action="complete" binding-visible="{eval path=Completed, value=false, alternativevalue=true}" _taskid="{eval path=ID}">完成</a>
+              <a action="revert" binding-visible="{eval path=Completed}" _taskid="{eval path=ID}">恢复</a> ,
+              <a action="modify" _taskid="{eval path=ID}">修改</a>,
+              <a action="remove" _taskid="{eval path=ID}" onclick="return confirm('删除以后不能恢复的，确定？')">删除</a>
             </li>
           </ul>
         </div>

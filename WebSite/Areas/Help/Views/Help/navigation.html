@@ -5,8 +5,8 @@
   <title></title>
 </head>
 <body>
-  <div class="parent" datacontext="{binding key=Parents}"><a action=Entry _path="{binding path=VirtualPath}"><binding path="Title"></binding></a></div>
-  <div class="current" datacontext="{binding key=Current}"><binding path="Title"></binding></div>
-  <div class="child" datacontext="{binding key=Childs}"><a action=Entry _path="{binding path=VirtualPath}"><binding path="Title"></binding></a></div>
+  <div class="parent" datacontext="{eval key=Parents}"><a action=Entry _path="{eval path=VirtualPath}"><eval path="Title"></eval></a></div>
+  <div class="current" datacontext="{eval key=Current}"><eval path="Title"></eval></div>
+  <div class="child" datacontext="{eval key=Childs}"><a action=Entry _path="{eval path=VirtualPath}"><eval path="Title"></eval></a></div>
 </body>
 </html>

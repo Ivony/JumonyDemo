@@ -325,14 +325,6 @@
             <param name="virtualPath">视图虚拟路径</param>
             <returns>要用于处理视图的 ViewHandler 对象</returns>
         </member>
-        <member name="M:Ivony.Html.Web.MvcHelpers.GetUrlHelper(System.Web.Routing.RequestContext,System.String)">
-            <summary>
-            获取为应用程序生成 URL 的帮助器
-            </summary>
-            <param name="requestContext">请求上下文</param>
-            <param name="virtualPath">视图 URL 地址</param>
-            <returns>URL 帮助器</returns>
-        </member>
         <member name="T:Ivony.Html.Web.ViewHandlerProvider">
             <summary>
             提供视图处理程序
@@ -827,7 +819,7 @@
         </member>
         <member name="M:Ivony.Html.Web.JumonyView.CreateViewContext">
             <summary>
-            创建一个视图上下文供视图处理器使用
+            创建一个视图上下文供视图处理程序使用
             </summary>
             <returns>视图上下文</returns>
         </member>
@@ -1360,7 +1352,7 @@
             </summary>
             <param name="urlHelper">用于产生 URL 的 URL 帮助器</param>
             <param name="viewContext">当前视图上下文</param>
-            <param name="viewHandler">当前视图处理器</param>
+            <param name="viewHandler">当前视图处理程序</param>
         </member>
         <member name="M:Ivony.Html.Web.PartialViewAdapter.RenderPartial(Ivony.Html.IHtmlElement)">
             <summary>

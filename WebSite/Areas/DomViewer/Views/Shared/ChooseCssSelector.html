@@ -11,16 +11,16 @@
   <form class="cssSelector" action="Default" controller inherits="*">
     <div style="float: left;">
       <label>
-        <input name="selector" size="28" id="selectorInput" onblur="showTips()" onfocus="this.style.backgroundImage='';" value="{binding key=SelectorExpression}" />
+        <input name="selector" size="28" id="selectorInput" onblur="showTips()" onfocus="this.style.backgroundImage='';" value="{eval key=SelectorExpression}" />
       </label>
       <input type="submit" value="显示选择器结果" />
     </div>
 
-    <div class="message" style="float: right;" binding-visible="{binding key=SelectedElements}">
+    <div class="message" style="float: right;" binding-visible="{eval key=SelectedElements}">
       共找到
-      <binding key="SelectedElements" />
+      <eval key="SelectedElements" />
       个符合选择器
-      <binding key="SelectorExpression" />
+      <eval key="SelectorExpression" />
       的元素
     </div>
     <div style="clear: both;"></div>
