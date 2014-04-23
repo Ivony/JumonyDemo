@@ -5,8 +5,8 @@
   <title></title>
 </head>
 <body>
-  <div class="parent" datacontext="{eval key=Parents}"><a action=Entry _path="{eval path=VirtualPath}"><eval path="Title"></eval></a></div>
-  <div class="current" datacontext="{eval key=Current}"><eval path="Title"></eval></div>
-  <div class="child" datacontext="{eval key=Childs}"><a action=Entry _path="{eval path=VirtualPath}"><eval path="Title"></eval></a></div>
+  <div class="parent" datamodel="{eval-list path=[Parents]}"><a action=Entry _path="{eval path=VirtualPath}"><eval path="Title"></eval></a></div>
+  <div class="current" datamodel="{eval path=[Current]}"><eval path="Title"></eval></div>
+  <div class="child" datamodel="{eval-list path=[Childs]}"><a action=Entry _path="{eval path=VirtualPath}"><eval path="Title"></eval></a></div>
 </body>
 </html>

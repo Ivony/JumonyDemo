@@ -6,7 +6,7 @@
   {
     AreaRegistration.RegisterAllAreas();
 
-    SimpleRouteTable.DebugMode = true;
+    //SimpleRouteTable.DebugMode = true;
 
   }
 

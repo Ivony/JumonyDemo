@@ -22,12 +22,18 @@ namespace Jumony.Demo.DomViewer
   public class DomTreeController : Controller
   {
 
-    [Cacheable( typeof( CacheProvider ) )]
+    //[Cacheable(typeof(CacheProvider))]
     public ActionResult Default()
     {
       return View( "Layout" );
     }
-
+    [ChildActionOnly]
+    public ActionResult ChooseCssSelector( string hash )
+    {
+      if ( hash == null )
+        return null;
+      return PartialView( "ChooseCssSelector" );
+    }
 
     [ChildActionOnly]
     public ActionResult ChooseDocument( string hash )
@@ -36,7 +42,7 @@ namespace Jumony.Demo.DomViewer
       if ( System.IO.File.Exists( infoFilePath ) )
       {
         var info = System.IO.File.ReadAllLines( infoFilePath );
-        if ( info[0] == "LocalFile" )
+        if ( info[0] == "Local" )
           ViewData["Type"] = "Local";
 
         else
@@ -148,6 +154,18 @@ namespace Jumony.Demo.DomViewer
 
       filterContext.Result = View( "Error", filterContext.Exception );
       filterContext.ExceptionHandled = true;
+    }
+
+
+
+    protected override void OnActionExecuting( ActionExecutingContext filterContext )
+    {
+      HttpContext.Trace.Write( "Executing Action " + filterContext.ActionDescriptor.ActionName );
+    }
+
+    protected override void OnActionExecuted( ActionExecutedContext filterContext )
+    {
+      HttpContext.Trace.Write( "Executed Action " + filterContext.ActionDescriptor.ActionName );
     }
 
   }

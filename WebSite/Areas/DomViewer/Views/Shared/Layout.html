@@ -3,30 +3,15 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Jumony Core Demo</title>
-  <link rel="stylesheet" href="selected.css" />
   <link rel="stylesheet" href="main.css" />
   <link rel="stylesheet" href="domViewer.css" />
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="jumony.js"></script>
 </head>
-<body style="min-width: 1000px;">
-
-  <div style="position: fixed; top: 0px; left: 0px; width: 100%; height: 45px; background-color: white;">
-    <div style="margin: 10px 10px 0px 10px;">
-      <div style="float: left;">
-        <partial action="ChooseDocument" inherits="hash"></partial>
-      </div>
-      <div style="float: left; padding: 2px 20px;">
-        <partial view="Share"></partial>
-      </div>
-      <div style="float: left; padding: 2px 20px;">
-        ← 您的支持，我的动力。
-   
-      </div>
-
-      <div style="clear: both;"></div>
-      <hr />
-    </div>
-  </div>
-  <div style="height: 45px;"></div>
+<body>
+  <header class="header">
+    <partial action="ChooseDocument" inherits="hash"></partial>
+  </header>
   <partial action="PageViewer"></partial>
 
 </body>

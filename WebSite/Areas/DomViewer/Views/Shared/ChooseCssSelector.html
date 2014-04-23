@@ -8,35 +8,24 @@
   <link rel="stylesheet" href="domViewer.css" />
 </head>
 <body>
-  <form class="cssSelector" action="Default" controller inherits="*">
-    <div style="float: left;">
-      <label>
-        <input name="selector" size="28" id="selectorInput" onblur="showTips()" onfocus="this.style.backgroundImage='';" value="{eval key=SelectorExpression}" />
-      </label>
-      <input type="submit" value="显示选择器结果" />
+  <div class="choose-selector">
+    <form action="Default" controller inherits="*">
+      <section id="selector-input">
+        <input type="text" name="selector" class="text" value="{eval key=SelectorExpression}" />
+        <span class="selected-elements"><em class="index">1</em>of<em class="count"><eval key="SelectedElements"></eval></em></span>
+      </section>
+      <section>
+        <button type="submit" class="btn">筛选</button>
+      </section>
+    </form>
+    <div class="btn-group">
+      <a href="#" class="next btn">下一个</a>
+      <a href="#" class="prev btn">上一个</a>
     </div>
-
-    <div class="message" style="float: right;" binding-visible="{eval key=SelectedElements}">
-      共找到
-      <eval key="SelectedElements" />
-      个符合选择器
-      <eval key="SelectorExpression" />
-      的元素
+    <div class="message">
+      分析文档耗时：
+      <eval path="[Timespan]"></eval>
     </div>
-    <div style="clear: both;"></div>
-
-  </form>
-
-  <script>
-    function showTips()
-    {
-      var selectorInput = document.getElementById("selectorInput")
-      if (selectorInput.value == "")
-        selectorInput.style.backgroundImage = "url('/Views/background.png')";
-    }
-    showTips();
-  </script>
-
-
+  </div>
 </body>
 </html>

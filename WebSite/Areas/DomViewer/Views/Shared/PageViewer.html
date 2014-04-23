@@ -5,14 +5,13 @@
   <title>页面信息展示</title>
 </head>
 <body>
-  <div id="pageInfo">
-    <partial view="ChooseCssSelector"></partial>
-    <partial view="DomViewer"></partial>
-    <div class="message">
-      分析文档耗时：
-      <eval key="Timespan"></eval>
+  <div class="content">
+    <div id="pageInfo">
+      <partial view="DomViewer"></partial>
     </div>
   </div>
-
+  <footer class="footer">
+    <partial view="ChooseCssSelector"></partial>
+  </footer>
 </body>
 </html>

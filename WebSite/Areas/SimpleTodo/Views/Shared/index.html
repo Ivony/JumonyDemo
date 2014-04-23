@@ -14,8 +14,8 @@
       <div class="box">
         <div class="box todos">
           <h2 class="box">待办事项</h2>
-          <ul>
-            <li datacontext="{eval}">
+          <ul datamodel="{eval-list path=Model, selector=li}">
+            <li>
               <span binding-class="{eval path=Completed, value=finished}"><eval path="Title">标题</eval></span>
               &nbsp;
               <a action="complete" binding-visible="{eval path=Completed, value=false, alternativevalue=true}" _taskid="{eval path=ID}">完成</a>

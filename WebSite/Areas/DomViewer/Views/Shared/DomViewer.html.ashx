@@ -9,104 +9,124 @@ using Ivony.Html.Web;
 public class DomViewer_html : ViewHandler
 {
 
-  private ISelector selector;
-  private IHtmlDocument document;
+    private ISelector selector;
+    private IHtmlDocument document;
+    private int index = 0;
+    private IHtmlElement code;
+    private IHtmlElement gutter;
 
-  protected override void ProcessScope()
-  {
-
-    selector = ViewData["Selector"] as ISelector;
-    document = ViewData["Document"] as IHtmlDocument;
-
-    foreach ( var node in document.Nodes() )
-      ProcessNode( (IHtmlElement) Scope, node );
-
-  }
-
-  private void ProcessNode( IHtmlElement container, IHtmlNode node, bool encodeWhiteSpace = false )
-  {
-
-    var specification = node.Document.HtmlSpecification;
-
-    var special = node as IHtmlSpecial;
-    if ( special != null )
+    protected override void ProcessScope()
     {
-      container.AddElement( "div" ).SetAttribute( "class", "special" ).InnerText( special.RawHtml );
-      return;
+        selector = ViewData["Selector"] as ISelector;
+        document = ViewData["Document"] as IHtmlDocument;
+        code = Scope.FindFirst("td.code");
+        gutter = Scope.FindFirst("td.gutter");
+        
+        foreach (var node in document.Nodes())
+            ProcessNode(node, string.Empty);
     }
-
-    var comment = node as IHtmlComment;
-    if ( special != null )
+    private void AddLineNumber()
     {
-      container.AddElement( "div" ).SetAttribute( "class", "comment" ).InnerText( comment.RawHtml );
-      return;
+        index++;
+        gutter.AddElement("div").SetAttribute("class", string.Format("line number{0} alt{1}", index, index % 2)).InnerText(index.ToString());
     }
-
-    var textNode = node as IHtmlTextNode;
-    if ( textNode != null )
+    private void AddCode(string className, string spaces, string value)
     {
-      container.AddElement( "div" ).SetAttribute( "class", "text" ).InnerText( textNode.HtmlText, encodeWhiteSpace );
-      return;
-    }
-
-    var element = node as IHtmlElement;
-    if ( element != null )
-    {
-      bool selfClosed = specification.IsForbiddenEndTag( element.Name );
-
-      if ( selector != null && selector.IsEligible( element ) )
-        container = container.AddElement( "div" ).SetAttribute( "class", "selected" );
-
-
-      var beginTag = container.AddElement( "div" ).SetAttribute( "class", "beginTag tag" );
-
-      beginTag.AddElement( "span" ).SetAttribute( "class", "brackets" ).InnerText( "<" );
-      beginTag.AddElement( "span" ).SetAttribute( "class", "elementName" ).InnerText( element.Name );
-
-      foreach ( var attribute in element.Attributes() )
-      {
-        beginTag.AddTextNode( " " );
-        beginTag.AddElement( "span" ).SetAttribute( "class", "attributeName" ).InnerText( attribute.Name );
-        if ( attribute.AttributeValue != null )
+        var line = code.AddElement("div").SetAttribute("class", string.Format("line number{0} alt{1}", index, index % 2));
+        if (!string.IsNullOrEmpty(spaces))
         {
-          beginTag.AddTextNode( "=" );
-          var attributeValue = beginTag.AddElement( "span" ).SetAttribute( "class", "attributeValue" );
-          attributeValue.AddElement( "span" ).SetAttribute( "class", "quote" ).InnerText( "\"" );
-          attributeValue.AddTextNode( HtmlEncoding.HtmlAttributeEncode( attribute.AttributeValue ) );
-          attributeValue.AddElement( "span" ).SetAttribute( "class", "quote" ).InnerText( "\"" );
+            line.AddElement("code").SetAttribute("class", "spaces").AddTextNode(spaces);
         }
-      }
-
-      beginTag.AddElement( "span" ).SetAttribute( "class", "brackets" ).InnerText( ">" );
-
-
-      var _encodeWhiteSpace = false;
-      if ( specification.IsCDataElement( element.Name ) )
-        _encodeWhiteSpace = true;
-
-
-      if ( !selfClosed && element.Nodes().Any() )
-      {
-        var childsContainer = container.AddElement( "div" ).SetAttribute( "class", "childs" );
-        foreach ( var childNode in element.Nodes() )
-          ProcessNode( childsContainer, childNode, _encodeWhiteSpace );
-      }
-
-      if ( !selfClosed )
-      {
-        var endTag = container.AddElement( "div" ).SetAttribute( "class", "endTag tag" );
-        endTag
-          .AddElement( "span" ).SetAttribute( "class", "brackets" ).InnerText( "<" )
-          .AddElement( "span" ).SetAttribute( "class", "slash" ).InnerText( "/" )
-          .AddElement( "span" ).SetAttribute( "class", "elementName" ).InnerText( element.Name )
-          .AddElement( "span" ).SetAttribute( "class", "brackets" ).InnerText( ">" );
-      }
-
-
-      return;
+        line.AddElement("code").SetAttribute("class", className).InnerText(value);
     }
+    private void ProcessNode(IHtmlNode node,string spaces)
+    {
+        var specification = node.Document.HtmlSpecification;
 
+        var special = node as IHtmlSpecial;
+        if (special != null)
+        {
+            AddLineNumber();
+            AddCode("plain", spaces, special.RawHtml);
+            return;
+        }
+        //注释
+        var comment = node as IHtmlComment;
+        if (comment != null)
+        {
+            string[] contentLines = comment.ToString().Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (var s in contentLines)
+            {
+                AddLineNumber();
+                AddCode("comments", spaces, s.TrimStart());
+            }
+            return; 
+        }
+        //文本
+        var textNode = node as IHtmlTextNode;
+        if (textNode != null && !string.IsNullOrWhiteSpace(textNode.HtmlText))
+        {
+            string[] contentLines = textNode.HtmlText.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (var s in contentLines)
+            {
+                if (string.IsNullOrWhiteSpace(s))
+                    continue;
+                AddLineNumber();
+                AddCode("plain", spaces, s);
+            }
+            return;
+        }
 
-  }
+        var element = node as IHtmlElement;
+        if (element != null)
+        {
+            bool selfClosed = specification.IsForbiddenEndTag(element.Name);
+            AddLineNumber();
+            var line = code.AddElement("div").SetAttribute("class", string.Format("line number{0} alt{1}", index, index % 2));
+            if (selector != null && selector.IsEligible(element))
+            {
+                line.SetAttribute("class", string.Format("line number{0} alt{1} selected", index, index % 2));
+            }
+            if (!string.IsNullOrEmpty(spaces))
+            {
+                line.AddElement("code").SetAttribute("class", "spaces").AddTextNode(spaces);
+            }
+            line.AddElement("code").SetAttribute("class", "brackets").InnerText("<");
+            line.AddElement("code").SetAttribute("class", "keyword").InnerText(element.Name);
+            
+            foreach (var attribute in element.Attributes())
+            {
+                line.AddTextNode("&nbsp;");
+                line.AddElement("code").SetAttribute("class", "attributeName").InnerText(attribute.Name);
+                if (attribute.AttributeValue != null)
+                {
+                    line.AddElement("code").SetAttribute("class", "plain").InnerText("=");
+                    line.AddElement("code").SetAttribute("class", "quote").InnerText("\"");
+                    line.AddElement("code").SetAttribute("class", "attributeValue").InnerText(attribute.AttributeValue.Replace("\n","").Replace("\r",""),true);
+                    line.AddElement("code").SetAttribute("class", "quote").InnerText("\"");
+                }
+            }
 
+            line.AddElement("code").SetAttribute("class", "brackets").InnerText(">");
+
+            if (!selfClosed && element.Nodes().Any())
+            {
+                foreach (var childNode in element.Nodes())
+                    ProcessNode(childNode, spaces + "&nbsp;&nbsp;");
+            }
+
+            if (!selfClosed)
+            {
+                AddLineNumber();
+                var endTag = code.AddElement("div").SetAttribute("class", string.Format("line number{0} alt{1}", index, index % 2));
+                if (!string.IsNullOrEmpty(spaces))
+                {
+                    endTag.AddElement("code").SetAttribute("class", "spaces").AddTextNode(spaces);
+                }
+                endTag.AddElement("code").SetAttribute("class", "brackets").InnerText("</")
+                    .AddElement("code").SetAttribute("class", "keyword").InnerText(element.Name)
+                    .AddElement("code").SetAttribute("class", "brackets").InnerText(">");
+            }
+        }
+    }
 }

@@ -1,0 +1,834 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ivony.Html.Forms</name>
+    </assembly>
+    <members>
+        <member name="T:Ivony.Html.Forms.IFormMetadataProvider">
+            <summary>
+            定义表单字段元数据提供程序
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.IFormMetadataProvider.GetFieldMetadata(System.String)">
+            <summary>
+            获取指定字段元数据
+            </summary>
+            <param name="name">字段名</param>
+            <returns>字段元数据</returns>
+        </member>
+        <member name="T:Ivony.Html.Forms.FormButtonGroup">
+            <summary>
+            为单选框和复选框组实现控件抽象
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Forms.FormGroupControl">
+            <summary>
+            为标准的表单控件组提供基础实现
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Forms.FormGroupControlBase">
+            <summary>
+            为下拉列表、单选复选框等表单控件组提供基类型
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Forms.IFormControl">
+            <summary>
+            代表一个表单控件
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.IFormControl.CanSetValue(System.String)">
+            <summary>
+            检查值是否可以设置到控件
+            </summary>
+            <param name="value">要设置的值</param>
+            <returns>是否可以设置</returns>
+        </member>
+        <member name="P:Ivony.Html.Forms.IFormControl.Form">
+            <summary>
+            控件所属的表单
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.IFormControl.Name">
+            <summary>
+            控件名
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.IFormControl.Value">
+            <summary>
+            获取或设置控件目前的值
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormControl.#ctor(Ivony.Html.Forms.HtmlForm)">
+            <summary>
+            构建 FormControl 实例
+            </summary>
+            <param name="form">控件所属表单</param>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormControl.EnsureValue(System.String)">
+            <summary>
+            确保设置的值是合法的
+            </summary>
+            <param name="value">要设置的值</param>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormControl.SetValue(System.String)">
+            <summary>
+            派生类实现此方法设置控件值
+            </summary>
+            <param name="value">要设置的值</param>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormControl.GetValue">
+            <summary>
+            派生类实现此方法获取控件设置的值
+            </summary>
+            <returns>控件设置的值</returns>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormControl.CanSetValue(System.String)">
+            <summary>
+            确定能否设置指定的文本值
+            </summary>
+            <param name="value">要设置的文本值</param>
+            <returns>是否能够设置</returns>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormControl.CanSetValue(System.String,System.String@)">
+            <summary>
+            派生类实现此方法确定指定的文本值是否能够被设置
+            </summary>
+            <param name="value">要设置的文本值</param>
+            <param name="message">不能设置的错误信息</param>
+            <returns>是否能够设置</returns>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormControl.Form">
+            <summary>
+            控件所属表单
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormControl.Name">
+            <summary>
+            控件名称
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormControl.Value">
+            <summary>
+            实现 Value 属性，调用 SetValue 和 GetValue 方法
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormGroupControlBase.#ctor(Ivony.Html.Forms.HtmlForm)">
+            <summary>
+            创建表单控件组的实例
+            </summary>
+            <param name="form">所属表单</param>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormGroupControlBase.SplitValues(System.String)">
+            <summary>
+            按照逗号拆分控件值表达式
+            </summary>
+            <param name="valuesExpression">要拆分的值表达式</param>
+            <returns>拆分后的值集合</returns>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormGroupControlBase.CanSetValue(System.String,System.String@)">
+            <summary>
+            实现 CanSetValue 方法，检查要设置的值是否存在于候选值列表中
+            </summary>
+            <param name="value">所要设置的值</param>
+            <param name="message">若不能设置，获取错误信息</param>
+            <returns>是否可以设置</returns>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormGroupControlBase.CanSetValues(System.Collections.Generic.HashSet{System.String},System.String@)">
+            <summary>
+            检查要设置的值是否存在于候选值列表中
+            </summary>
+            <param name="values">所要设置的值</param>
+            <param name="message">若不能设置，获取错误信息</param>
+            <returns>是否可以设置</returns>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormGroupControlBase.SetValue(System.String)">
+            <summary>
+            设置控件的值
+            </summary>
+            <param name="valuesExpression">值表达式，可以是单个值，也可以是多个用逗号分隔的值</param>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormGroupControlBase.SetValues(System.Collections.Generic.HashSet{System.String})">
+            <summary>
+            设置控件值
+            </summary>
+            <param name="values">要设置的值列表</param>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormGroupControlBase.GetValue">
+            <summary>
+            获取目前所设置的值
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormGroupControlBase.GetValues">
+            <summary>
+            获取目前所设置的值
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormGroupControlBase.CandidateValues">
+            <summary>
+            候选值，即可以被设置的值
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormGroupControlBase.AllowMultiple">
+            <summary>
+            指示输入组控件是否允许多选
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormGroupControl.#ctor(Ivony.Html.Forms.HtmlForm)">
+            <summary>
+            创建标准表单控件组实例
+            </summary>
+            <param name="form">控件所属表单</param>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormGroupControl.GetValues">
+            <summary>
+            实现 Values 属性，获取当前所设置的值
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormGroupControl.SetValues(System.Collections.Generic.HashSet{System.String})">
+            <summary>
+            设置值
+            </summary>
+            <param name="values">要设置的值列表</param>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormGroupControl.CandidateValues">
+            <summary>
+            实现 CandidateValues 方法，获取可以设置的候选值
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormGroupControl.Items">
+            <summary>
+            获取输入组项
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormGroupControl.Item(System.String)">
+            <summary>
+            获取具有指定值的项
+            </summary>
+            <param name="value">指定的值</param>
+            <returns>具有这个值的输入项</returns>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormButtonGroup.Items">
+            <summary>
+            实现 Items 属性，提供控件项
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormButtonGroup.ButtonItems">
+            <summary>
+            获取组控件中的按钮项
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormButtonGroup.AllowMultiple">
+            <summary>
+            获取一个值，指示该控件组是否允许多个值。
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormButtonGroup.Name">
+            <summary>
+            获取控件名
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Forms.FormGroupControlItem">
+            <summary>
+            表单控件组具体项的抽象
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormGroupControlItem.#ctor(Ivony.Html.Forms.FormGroupControlBase)">
+            <summary>
+            创建表单空间组具体项的实例
+            </summary>
+            <param name="group">所属的控件组</param>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormGroupControlItem.GroupControl">
+            <summary>
+            获取所属的控件组
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormGroupControlItem.Value">
+            <summary>
+            该项所代表的值
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormGroupControlItem.Selected">
+            <summary>
+            该项是否处于被选中状态
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Forms.FormControlCollection">
+            <summary>
+            表单控件容器
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormControlCollection.GetKeyForItem(Ivony.Html.Forms.IFormControl)">
+            <summary>
+            重写 GetKeyForItem 方法，从表单控件中提取 Name （控件名称）属性
+            </summary>
+            <param name="item">要提取名称的表单控件</param>
+            <returns>表单控件的名称</returns>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormControlCollection.ControlNames">
+            <summary>
+            获取所有控件的名称
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Forms.FormControlException">
+            <summary>
+            表示分析、设置表单控件时发生的异常
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormControlException.#ctor(Ivony.Html.Forms.IFormControl,System.String)">
+            <summary>
+            创建 FromControlException 对象
+            </summary>
+            <param name="control">引发异常的表单控件</param>
+            <param name="message">异常信息</param>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormControlException.Control">
+            <summary>
+            引发异常的表单控件
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Forms.FormFieldMetadata">
+            <summary>
+            定义表单字段元数据
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormFieldMetadata.GetValidator">
+            <summary>
+            获取验证器
+            </summary>
+            <returns>字段验证器</returns>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormFieldMetadata.Name">
+            <summary>
+            字段名称
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormFieldMetadata.DisplayName">
+            <summary>
+            字段显示名称
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormFieldMetadata.FieldDescription">
+            <summary>
+            字段描述
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormFieldMetadata.Rules">
+            <summary>
+            填写规则描述
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Forms.IFormFieldValidator">
+            <summary>
+            定义表单控件验证器
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.IFormFieldValidator.Validate(System.String)">
+            <summary>
+            对控件值进行验证
+            </summary>
+            <param name="value">控件提交的值</param>
+            <returns>验证错误对象，若没有错误则返回 null</returns>
+        </member>
+        <member name="P:Ivony.Html.Forms.IFormFieldValidator.Name">
+            <summary>
+            字段名
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Forms.FormFieldValidatorCollection">
+            <summary>
+            定义一个 FormControlValidator 的容器
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormFieldValidatorCollection.#ctor">
+            <summary>
+            创建 FormControlValidatorCollection 对象
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormFieldValidatorCollection.#ctor(System.Collections.Generic.IEnumerable{Ivony.Html.Forms.IFormFieldValidator})">
+            <summary>
+            创建 FormControlValidatorCollection 对象
+            </summary>
+            <param name="validators">字段验证器集合</param>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormFieldValidatorCollection.GetKeyForItem(Ivony.Html.Forms.IFormFieldValidator)">
+            <summary>
+            重写 GetKeyForItem 方法，抽取验证的控件名
+            </summary>
+            <param name="item">要抽取控件名的控件验证器</param>
+            <returns>控件名</returns>
+        </member>
+        <member name="T:Ivony.Html.Forms.FormExtensions">
+            <summary>
+            提供一组关于表单的扩展方法
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormExtensions.AsForm(Ivony.Html.IHtmlElement,Ivony.Html.Forms.FormConfiguration,Ivony.Html.Forms.IFormProvider)">
+            <summary>
+            尝试将一个HTML元素转换为表单
+            </summary>
+            <param name="element">要转换为表单的元素</param>
+            <returns></returns>
+        </member>
+        <member name="T:Ivony.Html.Forms.FormMetadata">
+            <summary>
+            定义表单的元数据
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormMetadata.#ctor(Ivony.Html.Forms.HtmlForm,Ivony.Html.Forms.IFormMetadataProvider)">
+            <summary>
+            通过表单元数据提供程序，针对指定表单创建 FormMeatadata 对象
+            </summary>
+            <param name="form">要创建元数据的表单</param>
+            <param name="provider">表单元数据提供程序</param>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormMetadata.GetFieldMetadata">
+            <summary>
+            获取所有字段的元数据
+            </summary>
+            <returns>所有字段的元数据</returns>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormMetadata.GetFormValidator">
+            <summary>
+            根据元数据获取表单验证器
+            </summary>
+            <returns>表单验证器</returns>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormMetadata.Form">
+            <summary>
+            所属表单
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormMetadata.MetadataProvider">
+            <summary>
+            表单元数据提供程序
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Forms.FormValidationErrorCollection">
+            <summary>
+            定义 FormValidationError 对象的容器
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormValidationErrorCollection.#ctor">
+            <summary>
+            创建 FormValidationErrorCollection 对象
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormValidationErrorCollection.GetKeyForItem(Ivony.Html.Forms.FormValidationError)">
+            <summary>
+            重写 GetKeyForItem 方法抽取键值。
+            </summary>
+            <param name="item">要抽取键的 FormValidationError 对象</param>
+            <returns>对象所对应的控件名</returns>
+        </member>
+        <member name="T:Ivony.Html.Forms.FormValidationError">
+            <summary>
+            定义表单验证错误
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormValidationError.#ctor(System.String,System.String[])">
+            <summary>
+            创建 FormValidationError 对象
+            </summary>
+            <param name="name">字段名</param>
+            <param name="messages">错误消息</param>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormValidationError.Name">
+            <summary>
+            字段名称
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormValidationError.Messages">
+            <summary>
+            错误消息
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Forms.FormValidationResult">
+            <summary>
+            IFormValidationResult 的标准实现
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Forms.IFormValidationResult">
+            <summary>
+            定义表单验证结果
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.IFormValidationResult.Form">
+            <summary>
+            所属表单
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.IFormValidationResult.HasError">
+            <summary>
+            是否存在验证错误
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.IFormValidationResult.Errors">
+            <summary>
+            获取验证错误消息集合
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormValidationResult.#ctor(Ivony.Html.Forms.HtmlForm,System.Collections.Generic.IEnumerable{Ivony.Html.Forms.FormValidationError})">
+            <summary>
+            创建 FormValidationResult 对象
+            </summary>
+            <param name="form">所验证的表单</param>
+            <param name="errors">验证错误信息</param>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormValidationResult.HasError">
+            <summary>
+            是否存在验证错误
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormValidationResult.Errors">
+            <summary>
+            验证错误信息
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Forms.FormValidator">
+            <summary>
+            实现 IFormValidator
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormValidator.#ctor(Ivony.Html.Forms.FormFieldValidatorCollection)">
+            <summary>
+            创建 FormValidator 对象
+            </summary>
+            <param name="validators">字段验证器列表</param>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormValidator.ValidateForm(Ivony.Html.Forms.HtmlForm)">
+            <summary>
+            对表单执行验证
+            </summary>
+            <param name="form">要验证的表单</param>
+            <returns>验证结果</returns>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormValidator.Validators">
+            <summary>
+            表单字段验证器列表
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Forms.FormValueFormatException">
+            <summary>
+            当设置的表单值格式不正确时抛出的异常
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormValueFormatException.#ctor(Ivony.Html.Forms.IFormControl,System.String)">
+            <summary>
+            创建 FormValueFormatException 对象
+            </summary>
+            <param name="control">设置错误值的表单控件</param>
+            <param name="message">异常消息</param>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormValueFormatException.Control">
+            <summary>
+            设置错误格式值的表单控件
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Forms.FormPresenter">
+            <summary>
+            IFormPresenter 的一个标准实现
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Forms.IFormPresenter">
+            <summary>
+            定义用于呈现表单元数据和验证信息的呈现器
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.IFormPresenter.ShowValidationResult(Ivony.Html.Forms.IFormValidationResult)">
+            <summary>
+            显示表单验证结果
+            </summary>
+            <param name="result">表单验证结果</param>
+        </member>
+        <member name="M:Ivony.Html.Forms.IFormPresenter.ShowMetadata(Ivony.Html.Forms.FormMetadata)">
+            <summary>
+            显示表单元数据
+            </summary>
+            <param name="metadata">表单元数据</param>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormPresenter.ShowErrorSummary(Ivony.Html.Forms.FormValidationErrorCollection)">
+            <summary>
+            显示表单验证的错误的摘要信息
+            </summary>
+            <param name="result"></param>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormPresenter.ShowError(Ivony.Html.Forms.HtmlForm,Ivony.Html.Forms.FormValidationError)">
+            <summary>
+            显示字段验证错误信息
+            </summary>
+            <param name="error">错误信息</param>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormPresenter.FindErrorMessageContainer(Ivony.Html.Forms.HtmlForm,System.String)">
+            <summary>
+            找到指定字段的错误信息显示容器
+            </summary>
+            <param name="fieldName">字段名称</param>
+            <returns>错误信息显示容器</returns>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormPresenter.ShowErrorMessage(Ivony.Html.IHtmlElement,System.String[])">
+            <summary>
+            在指定元素呈现字段的所有错误信息
+            </summary>
+            <param name="container">要呈现错误信息的元素</param>
+            <param name="messages">错误信息</param>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormPresenter.RemoveErrorMessage(Ivony.Html.Forms.HtmlForm,System.String)">
+            <summary>
+            移除没有错误信息的字段的错误信息呈现容器
+            </summary>
+            <param name="fieldName">字段名</param>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormPresenter.ShowMetadata(Ivony.Html.Forms.FormMetadata)">
+            <summary>
+            呈现表单的元数据
+            </summary>
+            <param name="metadata">表单元数据</param>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormPresenter.RemoveErrorMessageContainer">
+            <summary>
+            派生类重写此属性指示当某字段没有错误信息时，是否移除该错误信息呈现容器。
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Forms.FormTextControl">
+            <summary>
+            文本控件的基类
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormTextControl.#ctor(Ivony.Html.Forms.HtmlForm,Ivony.Html.IHtmlElement)">
+            <summary>
+            派生类调用此构造函数初始化 FormTextControl 实例
+            </summary>
+            <param name="form">所属表单</param>
+            <param name="element">定义文本控件的元素</param>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormTextControl.CanSetValue(System.String,System.String@)">
+            <summary>
+            确定能够设置指定的文本值
+            </summary>
+            <param name="value">要设置的文本值</param>
+            <param name="message">不能设置的错误信息</param>
+            <returns>是否能够设置</returns>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormTextControl.Element">
+            <summary>
+            获取定义文本控件的元素
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormTextControl.Name">
+            <summary>
+            实现 Name 属性，输出定义文本控件的元素的 name 属性（attribute）
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormTextControl.MaxLength">
+            <summary>
+            获取 maxlength 的设置
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Forms.HtmlForm">
+            <summary>
+            抽象化 HTML 表单，提供有用的功能。
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.HtmlForm.#ctor(Ivony.Html.IHtmlElement,Ivony.Html.Forms.FormConfiguration,Ivony.Html.Forms.IFormProvider)">
+            <summary>
+            创建一个 HTML 表单对象
+            </summary>
+            <param name="element">表单元素</param>
+            <param name="configuration">表单配置</param>
+            <param name="provider">表单控件提供程序</param>
+        </member>
+        <member name="M:Ivony.Html.Forms.HtmlForm.RefreshForm">
+            <summary>
+            重新扫描表单中所有控件
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.HtmlForm.Element">
+            <summary>
+            表单元素
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.HtmlForm.Controls">
+            <summary>
+            获取所有表单控件
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.HtmlForm.Provider">
+            <summary>
+            表单控件提供程序
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.HtmlForm.FormData">
+            <summary>
+            提供一个容器，可以对当前表单数据进行暂存，
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.HtmlForm.Configuration">
+            <summary>
+            获取该表单的配置对象
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.HtmlForm.SyncRoot">
+            <summary>
+            用于 HTML DOM 同步的对象，当对表单进行扫描时，将锁住 HTML DOM 避免出现问题
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Forms.FormConfiguration">
+            <summary>
+            提供一些设置项，可以自定义 Jumony Forms 的行为。
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.FormConfiguration.#ctor">
+            <summary>
+            创建 FormCongfiguration 实例。
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormConfiguration.IgnoreInvalidMaxlength">
+            <summary>
+            分析表单时是否忽略控件的 maxlength 属性设置的值格式错误。
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormConfiguration.IgnoreInvailidValuesInGroupControl">
+            <summary>
+            给输入组控件设置值超出了组控件的可选值范围时，是否忽略非法值的设置。
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormConfiguration.IgnoreOverflowOfLength">
+            <summary>
+            给文本输入控件设置的值超出了 maxlength 的限制时，是否应当抛出异常。
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormConfiguration.IgnoreNewlineInTextbox">
+            <summary>
+            给单行文本框设置多行文本值，是否直接忽略所有换行符
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.FormConfiguration.IgnoreInvalidValueInTextControl">
+            <summary>
+            分析表单时是否忽略输入控件设置的值不满足控件的限制的情况
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Forms.HtmlModelForm">
+            <summary>
+            代表绑定在某个特定模型上的表单
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.HtmlModelForm.ModelChanged">
+            <summary>
+            当模型对象的属性发生变更时调用此方法更新表单
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.HtmlModelForm.Model">
+            <summary>
+            表单绑定的模型对象
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Forms.HtmlModelForm`1">
+            <summary>
+            代表一个强类型模型的表单
+            </summary>
+            <typeparam name="T">表单模型类型</typeparam>
+        </member>
+        <member name="T:Ivony.Html.Forms.HtmlSelect">
+            <summary>
+            表示一个 &lt;select&gt; 元素
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.HtmlSelect.Element">
+            <summary>
+            获取 DOM 上的 &lt;select&gt; 元素
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.HtmlSelect.Name">
+            <summary>
+            获取输入控件名
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.HtmlSelect.AllowMultiple">
+            <summary>
+            是否允许多选
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Forms.HtmlOption">
+            <summary>
+            表示一个 &lt;option&gt; 元素
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.HtmlOption.#ctor(Ivony.Html.Forms.HtmlSelect,Ivony.Html.IHtmlElement)">
+            <summary>
+            创建 HtmlOption 对象
+            </summary>
+            <param name="select">所属的 HtmlSelect 对象</param>
+            <param name="element">DOM 上对应的 &lt;option&gt; 元素</param>
+        </member>
+        <member name="P:Ivony.Html.Forms.HtmlOption.Element">
+            <summary>
+            获取 &lt;option&gt; 元素
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.HtmlOption.Selected">
+            <summary>
+            是否为选中状态
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.HtmlOption.Value">
+            <summary>
+            当前项的值
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.HtmlOption.Text">
+            <summary>
+            当前项的文本表现形式
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Forms.IFormProvider">
+            <summary>
+            定义表单控件提供程序需要实现的接口
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.IFormProvider.DiscoveryControls(Ivony.Html.Forms.HtmlForm)">
+            <summary>
+            尝试创建表单控件
+            </summary>
+            <param name="form">要创建控件的表单</param>
+            <param name="element">要创建控件的元素</param>
+            <returns></returns>
+        </member>
+        <member name="T:Ivony.Html.Forms.IFormValidationRule">
+            <summary>
+            定义表单字段验证规则
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.IFormValidationRule.IsValid(System.String)">
+            <summary>
+            指定值是否满足验证规则
+            </summary>
+            <param name="value">指定的值</param>
+            <returns>是否满足规则</returns>
+        </member>
+        <member name="P:Ivony.Html.Forms.IFormValidationRule.ErrorMessageTemplate">
+            <summary>
+            获取错误信息模板
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Forms.IFormValidationRule.RuleDescription">
+            <summary>
+            获取规则描述
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Forms.StandardFormProvider">
+            <summary>
+            标准表单控件提供程序，用于解析所有标准的 HTML 表单控件
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Forms.StandardFormProvider.DiscoveryControls(Ivony.Html.Forms.HtmlForm,Ivony.Html.IHtmlContainer)">
+            <summary>
+            发现容器中所有可能是控件的元素并包装成控件返回
+            </summary>
+            <param name="form">控件所属的表单</param>
+            <param name="container">要搜索的容器</param>
+            <returns>找到的控件</returns>
+        </member>
+    </members>
+</doc>

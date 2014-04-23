@@ -5,65 +5,50 @@
   <title>上传或选择互联网文档</title>
 </head>
 <body>
-  <div class="documentSelector">
+    <div class="choose-document">
+        <form method="post" action="Default" controller enctype="multipart/form-data">
+            <section id="type">
+                <select name="type" id="document-type">
+                    <option value="Internet">Internet</option>
+                    <option value="Local">Local</option>
+                </select>
+            </section>
+            <section id="section-internet">
+                <input type="text" id="url" name="url" value="http://" class="text" />
+            </section>
+            <section id="section-local">
+                <input type="file" id="file" name="file" value="" class="file" />
+            </section>
+            <section id="encoding">
+                <select name="encoding">
+                    <option value="UTF-8">UTF-8</option>
+                    <option value="GB2312">GB2312</option>
+                </select>
+            </section>
+            <section>
+                <button type="submit" name="submit" class="btn">开始分析</button>
+            </section>
+        </form>
+    </div>
+    <script type="text/javascript">
+        $(function () {
 
-    <script>
+            var type = null;     //{eval key=Type}
+            var url = null;      //{eval key=Url}
+            var encoding = null; //{eval key=Encoding}
 
-      function show(type)
-      {
-        if (type == "Internet")
-        {
-          document.getElementById('url').style.display = 'inline';
-
-          if (document.getElementById('url').value == "")
-            document.getElementById('url').value = "http://";
-
-          document.getElementById('file').style.display = 'none';
-        }
-        else
-        {
-          document.getElementById('url').style.display = 'none';
-          document.getElementById('file').style.display = 'inline';
-        }
-      }
-
+            if (type != null) {
+                $("#url").val(url);
+                if (type != "Internet")
+                {
+                    $("#document-type option[value=Local]").attr("selected", true);
+                    $("#section-local").toggle();
+                    $("#section-internet").toggle();
+                }
+                $("select[name=encoding] option[value=" + encoding + "]").attr("selected", true);
+                $("select").selecter("refresh");
+            }
+        });
     </script>
-
-    <form method="post" action="Default" controller enctype="multipart/form-data">
-
-      <div>
-        <select name="type" onchange="show( this.value );">
-          <option value="Internet">Internet</option>
-          <option value="Local">Local</option>
-        </select>
-        <input id="url" name="url" type="url" style="width: 300px;" value="http://" />
-        <input id="file" name="file" type="file" style="width: 300px; display: none;" />
-        <select name="encoding">
-          <option>UTF-8</option>
-          <option>GB2312</option>
-        </select>
-        <input type="submit" value="开始分析" />
-      </div>
-    </form>
-
-    <script>
-
-      var type = null;     //{eval key=Type}
-      var url = null;      //{eval key=Url}
-      var encoding = null; //{eval key=Encoding}
-
-      if (type != null)
-      {
-        document.getElementsByName("type")[0].value = type;
-        document.getElementsByName("url")[0].value = url;
-        document.getElementsByName("encoding")[0].value = encoding;
-      }
-
-      show(document.getElementsByName("type")[0].value);
-
-
-    </script>
-  </div>
-
 </body>
 </html>
