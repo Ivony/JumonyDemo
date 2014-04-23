@@ -5,50 +5,52 @@
   <title>上传或选择互联网文档</title>
 </head>
 <body>
-    <div class="choose-document">
-        <form method="post" action="Default" controller enctype="multipart/form-data">
-            <section id="type">
-                <select name="type" id="document-type">
-                    <option value="Internet">Internet</option>
-                    <option value="Local">Local</option>
-                </select>
-            </section>
-            <section id="section-internet">
-                <input type="text" id="url" name="url" value="http://" class="text" />
-            </section>
-            <section id="section-local">
-                <input type="file" id="file" name="file" value="" class="file" />
-            </section>
-            <section id="encoding">
-                <select name="encoding">
-                    <option value="UTF-8">UTF-8</option>
-                    <option value="GB2312">GB2312</option>
-                </select>
-            </section>
-            <section>
-                <button type="submit" name="submit" class="btn">开始分析</button>
-            </section>
-        </form>
-    </div>
-    <script type="text/javascript">
-        $(function () {
+  <div class="choose-document">
+    <form method="post" action="Default" controller enctype="multipart/form-data">
+      <section id="type">
+        <select name="type" id="document-type">
+          <option value="Internet">Internet</option>
+          <option value="Local">Local</option>
+        </select>
+      </section>
+      <section id="section-internet">
+        <input type="url" id="url" name="url" value="http://" class="text" />
+      </section>
+      <section id="section-local">
+        <input type="file" id="file" name="file" value="" class="file" />
+      </section>
+      <section id="encoding">
+        <select name="encoding">
+          <option value="UTF-8">UTF-8</option>
+          <option value="GB2312">GB2312</option>
+        </select>
+      </section>
+      <section>
+        <button type="submit" name="submit" class="btn">开始分析</button>
+      </section>
+    </form>
+  </div>
+  <script type="text/javascript">
+    $(function ()
+    {
 
-            var type = null;     //{eval key=Type}
-            var url = null;      //{eval key=Url}
-            var encoding = null; //{eval key=Encoding}
+      var type = null;     //{eval path=[Type]}
+      var url = null;      //{eval path=[Url]}
+      var encoding = null; //{eval path=[Encoding]}
 
-            if (type != null) {
-                $("#url").val(url);
-                if (type != "Internet")
-                {
-                    $("#document-type option[value=Local]").attr("selected", true);
-                    $("#section-local").toggle();
-                    $("#section-internet").toggle();
-                }
-                $("select[name=encoding] option[value=" + encoding + "]").attr("selected", true);
-                $("select").selecter("refresh");
-            }
-        });
-    </script>
+      if (type != null)
+      {
+        $("#url").val(url);
+        if (type != "Internet")
+        {
+          $("#document-type option[value=Local]").attr("selected", true);
+          $("#section-local").toggle();
+          $("#section-internet").toggle();
+        }
+        $("select[name=encoding] option[value=" + encoding + "]").attr("selected", true);
+        $("select").selecter("refresh");
+      }
+    });
+  </script>
 </body>
 </html>
