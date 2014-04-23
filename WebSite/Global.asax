@@ -4,9 +4,15 @@
 
   void Application_Start( object sender, EventArgs e )
   {
+
     AreaRegistration.RegisterAllAreas();
 
-    //SimpleRouteTable.DebugMode = true;
+    MvcEnvironment.SimpleRouteTable
+      .MapAction( "~/", "Site", "Home" )
+      .MapRoute( "~/{action}", new { controller = "Site" } )
+      .MapDefaultRoute();
+
+    SimpleRouteTable.DebugMode = true;
 
   }
 
