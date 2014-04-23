@@ -21,7 +21,7 @@ website.publishproj
     <SourceWebVirtualPath>/WebSite</SourceWebVirtualPath>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <SourceWebProject>http://localhost:25147</SourceWebProject>
-    <SourceWebMetabasePath>/IISExpress/7.5/LM/W3SVC/10/ROOT</SourceWebMetabasePath>
+    <SourceWebMetabasePath>/IISExpress/7.5/LM/W3SVC/17/ROOT</SourceWebMetabasePath>
   </PropertyGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -53,6 +53,10 @@ website.publishproj
     <ProjectReference Include="..\Jumony.Demo.SimpleTodo\Jumony.Demo.SimpleTodo.csproj">
       <Project>{25E8565E-39C3-44B0-923F-A991CD94EE49}</Project>
       <Name>Jumony.Demo.SimpleTodo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Jumony.Demo.Site\Jumony.Demo.Site.csproj">
+      <Project>{A755D683-2016-4A4F-9082-7E76A586E8A7}</Project>
+      <Name>Jumony.Demo.Site</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(_WebPublishTargetsPath)\Web\Microsoft.WebSite.Publishing.targets" />
