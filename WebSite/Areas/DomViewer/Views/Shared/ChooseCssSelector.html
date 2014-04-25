@@ -12,7 +12,7 @@
     <form action="Default" controller inherits="*">
       <section id="selector-input">
         <input type="text" name="selector" class="text" value="{eval path=[SelectorExpression]}" />
-        <span class="selected-elements"><em class="index">1</em>of<em class="count"><eval key="SelectedElements"></eval></em></span>
+        <span class="selected-elements"><em class="index">1</em>of<em class="count"><eval path="[SelectedElements]"></eval></em></span>
       </section>
       <section>
         <button type="submit" class="btn">筛选</button>
