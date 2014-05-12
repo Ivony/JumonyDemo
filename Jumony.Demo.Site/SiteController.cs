@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace Jumony.Demo.Site
 
 
     private static readonly string ClientID = "000000004811b96d";
-    private static readonly string ClientKey = "c94hB5rc6BouSrKzc5XerYDbULONs5QQ"
+    private static readonly string ClientKey = "c94hB5rc6BouSrKzc5XerYDbULONs5QQ";
 
 
     public ActionResult Home()
@@ -48,12 +49,12 @@ namespace Jumony.Demo.Site
         data.Add( "redirect_uri", currentUrl );
 
         var message = await client.PostAsync( "https://login.live.com/oauth20_token.srf", new FormUrlEncodedContent( data ) );
-        
+        if ( message.StatusCode != HttpStatusCode.OK )
+          return Content( "Error\n" + await message.Content.ReadAsStringAsync() );
+
+        else
+          return Content( await message.Content.ReadAsStringAsync() );
       }
-
-
     }
-
-
   }
 }
