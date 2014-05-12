@@ -6,7 +6,7 @@
   {
 
     AreaRegistration.RegisterAllAreas();
-
+    
     MvcEnvironment.SimpleRouteTable
       .MapAction( "~/", "Site", "Home" )
       .MapRoute( "~/{action}", new { controller = "Site" } )
