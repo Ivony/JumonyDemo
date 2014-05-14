@@ -885,7 +885,7 @@
             <param name="writer">用于输出的文本编写器</param>
             <param name="adapters">渲染代理</param>
         </member>
-        <member name="M:Ivony.Html.ContentExtensions.RenderChilds(Ivony.Html.IHtmlContainer,Ivony.Html.HtmlRenderContext)">
+        <member name="M:Ivony.Html.ContentExtensions.RenderChilds(Ivony.Html.IHtmlContainer,Ivony.Html.IHtmlRenderContext)">
             <summary>
             渲染所有的子节点
             </summary>
@@ -914,14 +914,14 @@
             <param name="writer">HTML 编写器</param>
             <param name="adapters">HTML 输出转换器</param>
         </member>
-        <member name="M:Ivony.Html.ContentExtensions.Render(Ivony.Html.IHtmlNode,Ivony.Html.HtmlRenderContext)">
+        <member name="M:Ivony.Html.ContentExtensions.Render(Ivony.Html.IHtmlNode,Ivony.Html.IHtmlRenderContext)">
             <summary>
             将节点呈现为 HTML
             </summary>
             <param name="node">要呈现的节点</param>
             <param name="context">渲染上下文</param>
         </member>
-        <member name="M:Ivony.Html.ContentExtensions.RenderElementAndChilds(Ivony.Html.IHtmlElement,Ivony.Html.HtmlRenderContext)">
+        <member name="M:Ivony.Html.ContentExtensions.RenderElementAndChilds(Ivony.Html.IHtmlElement,Ivony.Html.IHtmlRenderContext)">
             <summary>
             渲染元素和其子节点
             </summary>
@@ -1735,7 +1735,7 @@
             定义一种 HTML 转换器，其可以自定义 HTML 节点的渲染规则。
             </summary>
         </member>
-        <member name="M:Ivony.Html.IHtmlRenderAdapter.Render(Ivony.Html.IHtmlNode,Ivony.Html.HtmlRenderContext)">
+        <member name="M:Ivony.Html.IHtmlRenderAdapter.Render(Ivony.Html.IHtmlNode,Ivony.Html.IHtmlRenderContext)">
             <summary>
             尝试呈现指定的节点
             </summary>
@@ -1753,7 +1753,7 @@
             <param name="element">要检测的元素</param>
             <returns>是否需要使用自定义渲染规则</returns>
         </member>
-        <member name="M:Ivony.Html.HtmlElementAdapter.Render(Ivony.Html.IHtmlElement,Ivony.Html.HtmlRenderContext)">
+        <member name="M:Ivony.Html.HtmlElementAdapter.Render(Ivony.Html.IHtmlElement,Ivony.Html.IHtmlRenderContext)">
             <summary>
             派生类实现此方法提供自定义的渲染规则。
             </summary>
@@ -1813,22 +1813,25 @@
             <param name="text">要编码的字符串</param>
             <param name="writer">用于写入编码后字符串的文本写入器</param>
         </member>
+        <member name="T:Ivony.Html.IHtmlRenderContext">
+            <summary>
+            定义 HTML 渲染上下文
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.IHtmlRenderContext.Writer">
+            <summary>
+            用于输出渲染的文本输出器
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.IHtmlRenderContext.RenderAdapters">
+            <summary>
+            获取当前上下文中所有的渲染代理
+            </summary>
+        </member>
         <member name="T:Ivony.Html.HtmlRenderContext">
             <summary>
             HTML 渲染上下文
             </summary>
-        </member>
-        <member name="M:Ivony.Html.HtmlRenderContext.Write(System.Object)">
-            <summary>
-            将对象直接写入渲染输出
-            </summary>
-            <param name="value">要写入渲染输出的对象</param>
-        </member>
-        <member name="M:Ivony.Html.HtmlRenderContext.Write(System.String)">
-            <summary>
-            将字符串直接写入渲染输出
-            </summary>
-            <param name="value">要写入渲染输出的对象</param>
         </member>
         <member name="P:Ivony.Html.HtmlRenderContext.Writer">
             <summary>
@@ -2768,7 +2771,7 @@
             要自定义呈现逻辑的 HTML 节点所需要实现的接口
             </summary>
         </member>
-        <member name="M:Ivony.Html.IHtmlRenderableNode.Render(Ivony.Html.HtmlRenderContext)">
+        <member name="M:Ivony.Html.IHtmlRenderableNode.Render(Ivony.Html.IHtmlRenderContext)">
             <summary>
             呈现这个节点
             </summary>

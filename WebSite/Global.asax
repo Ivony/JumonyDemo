@@ -6,13 +6,26 @@
   {
 
     AreaRegistration.RegisterAllAreas();
-    
+
     MvcEnvironment.SimpleRouteTable
       .MapAction( "~/", "Site", "Home" )
       .MapRoute( "~/{action}", new { controller = "Site" } )
       .MapDefaultRoute();
 
     SimpleRouteTable.DebugMode = true;
+
+
+    MvcEnvironment.JumonyViewEngine.AreaMasterLocationFormats
+      = MvcEnvironment.JumonyViewEngine.AreaPartialViewLocationFormats
+      = MvcEnvironment.JumonyViewEngine.AreaViewLocationFormats
+      = new[] { "~/Areas/{2}/Views/{0}.htm", "~/Areas/{2}/Views/{0}.html", };
+
+    MvcEnvironment.JumonyViewEngine.MasterLocationFormats
+      = MvcEnvironment.JumonyViewEngine.PartialViewLocationFormats
+      = MvcEnvironment.JumonyViewEngine.ViewLocationFormats
+      = new[] { "~/Views/{0}.htm", "~/Views/{0}.html", };
+
+    WebServiceLocator.RegisterService( new Jumony.Demo.Site.SiteFilterProvider() );
 
   }
 

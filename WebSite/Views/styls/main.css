@@ -1,0 +1,11 @@
+﻿body { }
+
+
+section.message { width: 700px; margin: auto; }
+
+  section.message header { text-align: center; }
+  section.message content { margin: 20px; line-height: 30px; text-indent: 0px; }
+
+  section.message h1 { font-family: 微软雅黑, 黑体, 'Arial Unicode MS'; font-size: 40px; }
+
+

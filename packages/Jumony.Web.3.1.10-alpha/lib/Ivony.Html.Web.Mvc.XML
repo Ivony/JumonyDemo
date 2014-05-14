@@ -804,7 +804,7 @@
             视图的虚拟路径
             </summary>
         </member>
-        <member name="P:Ivony.Html.Web.ViewBase.PartialMode">
+        <member name="P:Ivony.Html.Web.ViewBase.IsPartialView">
             <summary>
             是否为部分视图
             </summary>
@@ -922,6 +922,11 @@
         <member name="P:Ivony.Html.Web.JumonyView.MasterView">
             <summary>
             母板视图
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.JumonyView.IsContentView">
+            <summary>
+            获取一个值，指示当前视图是否为内容视图（即有母版页）
             </summary>
         </member>
         <member name="P:Ivony.Html.Web.JumonyView.Url">

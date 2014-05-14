@@ -889,7 +889,7 @@
             <param name="context">当前 HTTP 请求上下文</param>
             <param name="handler">视图处理程序对象，用于获取自定义分部视图处理方法</param>
         </member>
-        <member name="M:Ivony.Html.Web.PartialRenderAdapter.Render(Ivony.Html.IHtmlElement,Ivony.Html.HtmlRenderContext)">
+        <member name="M:Ivony.Html.Web.PartialRenderAdapter.Render(Ivony.Html.IHtmlElement,Ivony.Html.IHtmlRenderContext)">
             <summary>
             渲染 partial 标签
             </summary>
