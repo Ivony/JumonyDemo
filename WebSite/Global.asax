@@ -25,7 +25,7 @@
       = MvcEnvironment.JumonyViewEngine.ViewLocationFormats
       = new[] { "~/Views/{0}.htm", "~/Views/{0}.html", };
 
-    WebServiceLocator.RegisterService( new Jumony.Demo.Site.SiteFilterProvider() );
+    GlobalFilters.Filters.Add( new Jumony.Demo.Site.AuthenticationFilter() );
 
   }
 

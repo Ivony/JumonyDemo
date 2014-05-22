@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title></title>
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.0.min.js"></script>
+</head>
+<body style="margin: 50px">
+  <form postback>
+    <textarea id="editarea" style="width: 100%"></textarea>
+    <div style="text-align: center; margin: 10px;">
+      <input type="submit" value="提交修改" />
+    </div>
+  </form>
+  <script>
+
+
+    $(function ()
+    {
+      var f = function ()
+      {
+        $("#editarea").height($(window).height() - 150);
+      };
+
+      window.onresize = f;
+      f();
+    });
+
+
+  </script>
+</body>
+</html>

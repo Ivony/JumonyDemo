@@ -115,9 +115,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthenticationFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SiteController.cs" />
-    <Compile Include="UserInfoFilter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

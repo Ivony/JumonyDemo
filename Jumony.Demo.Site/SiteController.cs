@@ -13,6 +13,7 @@ using System.Web.Script.Serialization;
 using Ivony.Fluent;
 using System.Web.Security;
 using Ivony.Data;
+using System.Security.Claims;
 
 namespace Jumony.Demo.Site
 {
@@ -30,7 +31,7 @@ namespace Jumony.Demo.Site
     }
 
 
-    private static readonly string useridCacheToken = "userid";
+    private const string CookieToken = "usertoken";
 
 
     [HttpGet]
@@ -62,20 +63,27 @@ namespace Jumony.Demo.Site
           return LoginFailed( sourceUrl, await message.Content.ReadAsStringAsync() );
 
 
-        var data = await LoadJsonData( message );
-        var accessToken = data["access_token"].CastTo<string>();
+        {
+          var content = await message.Content.ReadAsStringAsync();
+          var data = new JavaScriptSerializer().DeserializeObject( content ).CastTo<IDictionary<string, object>>();
+          var accessToken = data["access_token"].CastTo<string>();
 
-        message = await client.GetAsync( "https://apis.live.net/v5.0/me?access_token=" + accessToken );
-        if ( message.StatusCode != HttpStatusCode.OK )
-          return LoginFailed( sourceUrl, await message.Content.ReadAsStringAsync() );
+          message = await client.GetAsync( "https://apis.live.net/v5.0/me?access_token=" + accessToken );
+          if ( message.StatusCode != HttpStatusCode.OK )
+            return LoginFailed( sourceUrl, await message.Content.ReadAsStringAsync() );
+        }
+
+        {
+          var content = await message.Content.ReadAsStringAsync();
+          var data = new JavaScriptSerializer().DeserializeObject( content ).CastTo<IDictionary<string, object>>();
+
+          var userid = data["id"].CastTo<string>();
+          var name = data["name"].CastTo<string>();
 
 
-        data = await LoadJsonData( message );
-        var userid = data["id"].CastTo<string>();
-        var name = data["name"].CastTo<string>();
-        EnsureUserdata( userid, name );
-
-        HttpContext.Response.SetCookie( new HttpCookie( useridCacheToken, userid ) );
+          var ticket = new FormsAuthenticationTicket( 1, userid, DateTime.UtcNow, DateTime.UtcNow.AddHours( 2 ), true, content );
+          Response.SetCookie( new HttpCookie( CookieToken, FormsAuthentication.Encrypt( ticket ) ) );
+        }
 
         return Redirect( sourceUrl );
       }
@@ -83,49 +91,6 @@ namespace Jumony.Demo.Site
 
     private static readonly SqlDbUtility db = SqlDbUtility.Create( "Database" );
 
-
-    public static string GetUsername( string userid = null )
-    {
-      if ( userid == null )
-      {
-        var cookie = System.Web.HttpContext.Current.Request.Cookies[useridCacheToken];
-        if ( cookie == null )
-          return null;
-
-        userid = cookie.Value;
-      }
-
-
-      return db.T( "SELECT name FROM Users WHERE id = {0}", userid ).ExecuteScalar<string>();
-    }
-
-
-    private void EnsureUserdata( string userId, string name )
-    {
-      if ( userId == null )
-        throw new ArgumentNullException( "userId" );
-
-      if ( string.IsNullOrWhiteSpace( name ) || name.Length > 50 )
-        name = userId;
-
-      using ( var transaction = db.BeginTransaction() )
-      {
-        var dataItem = transaction.T( "SELECT id, name FROM Users WHERE id = {0}", userId ).ExecuteDynamicObject();
-        if ( dataItem == null )
-        {
-          transaction.T( "INSERT INTO Users ( id, name ) VALUES ( {...} )", userId, name ).ExecuteNonQuery();
-          transaction.Commit();
-
-          return;
-        }
-
-        if ( name == dataItem.name )
-          return;
-
-        transaction.T( "UPDATE Users SET name = {1} WHERE id = {0}", userId, name ).ExecuteNonQuery();
-        transaction.Commit();
-      }
-    }
 
 
     private ActionResult LoginFailed( string sourceUrl, string message )
@@ -136,10 +101,39 @@ namespace Jumony.Demo.Site
     }
 
 
-    private static async Task<IDictionary<string, object>> LoadJsonData( HttpResponseMessage message )
+    public static ClaimsPrincipal Authentication( HttpContextBase context )
     {
-      var data = new JavaScriptSerializer().DeserializeObject( await message.Content.ReadAsStringAsync() ).CastTo<IDictionary<string, object>>();
-      return data;
+      var cookie = context.Request.Cookies[CookieToken];
+      if ( cookie == null )
+        return null;
+
+
+      var ticket = FormsAuthentication.Decrypt( cookie.Value );
+      if ( ticket == null || ticket.Expired )
+        return null;
+
+      var userid = ticket.Name;
+      var content = ticket.UserData;
+
+      var principal = GetClaimsUser( content );
+
+      context.User = principal;
+
+      return principal;
+    }
+
+    private static ClaimsPrincipal GetClaimsUser( string content )
+    {
+      var serializer = new JavaScriptSerializer();
+
+      var userdata = serializer.Deserialize<Dictionary<string, string>>( content );
+
+      var claims = userdata.Select( pair => new Claim( pair.Key, pair.Value ?? "" ) ).ToArray();
+
+      var identity = new ClaimsIdentity( claims, "MicrosoftAccout", "name", null );
+
+      var principal = new ClaimsPrincipal( identity );
+      return principal;
     }
   }
 }

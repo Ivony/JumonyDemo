@@ -36,7 +36,7 @@ namespace Jumony.Demo.HelpCenter
       ViewBag.Current = GetTopic( path );
       ViewBag.Childs = GetChilds( path ).Select( GetTopic ).NotNull().ToArray();
 
-      return View( GetDocumentPath( path ), "frame" );
+      return View( HelpDocumentProvider.GetDocumentPath( path ), "frame" );
     }
 
     private const string navigationCacheKey = "Navigation";
@@ -62,7 +62,7 @@ namespace Jumony.Demo.HelpCenter
         CacheDependency dependency;
         IHtmlDocument document;
 
-        document = HtmlServices.LoadDocument( GetDocumentPath( path ), out dependency );
+        document = HelpDocumentProvider.LoadDocument( path, out dependency );
 
         if ( document == null )
           return null;
@@ -86,23 +86,7 @@ namespace Jumony.Demo.HelpCenter
       return topic;
     }
 
-    private static string GetDocumentPath( string path )
-    {
-      if ( path.EndsWith( "/" ) )
-      {
-
-        var _path = VirtualPathUtility.RemoveTrailingSlash( path ) + ".html";
-        if ( VirtualPathProvider.FileExists( _path ) )
-          return _path;
-
-        _path = path + "_.html";
-        if ( VirtualPathProvider.FileExists( _path ) )
-          return _path;
-      }
-
-      return path;
-    }
-
+    
     private IEnumerable<string> GetParents( string path )
     {
       while ( !path.EqualsIgnoreCase( helpEntriesVirtualPath ) )

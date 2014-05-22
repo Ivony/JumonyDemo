@@ -116,6 +116,8 @@
   <ItemGroup>
     <Compile Include="HelpAreaRegistration.cs" />
     <Compile Include="HelpController.cs" />
+    <Compile Include="HelpDocumentProvider.cs" />
+    <Compile Include="HelpManagerController.cs" />
     <Compile Include="HelpTopic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
