@@ -14,11 +14,7 @@ namespace Jumony.Demo.Site
   {
     public void OnAuthorization( AuthorizationContext filterContext )
     {
-      var principal = SiteController.Authentication( filterContext.HttpContext );
-
-      if ( principal.Claims.First( claim => claim.Type == "id" ).Value.Equals( "", StringComparison.OrdinalIgnoreCase ) )
-        filterContext.RouteData.DataTokens.Add( "Admin", true );
-
+      filterContext.HttpContext.User = SiteController.Authentication( filterContext.HttpContext );
     }
   }
 }
