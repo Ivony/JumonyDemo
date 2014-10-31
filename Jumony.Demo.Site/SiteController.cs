@@ -89,7 +89,7 @@ namespace Jumony.Demo.Site
       }
     }
 
-    private static readonly SqlDbUtility db = SqlDbUtility.Create( "Database" );
+    private static readonly Ivony.Data.SqlClient.SqlDbExecutor db = SqlServer.FromConfiguration( "Database" );
 
 
 

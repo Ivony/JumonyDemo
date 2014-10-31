@@ -1,0 +1,1081 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ivony.Html.Web</name>
+    </assembly>
+    <members>
+        <member name="T:Ivony.Html.Web.DefaultProviders">
+            <summary>
+            提供默认的 HTML 提供程序
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.DefaultProviders.#ctor">
+            <summary>
+            初始化 DefaultProviders 对象
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.DefaultProviders.GetContentServices(System.String)">
+            <summary>
+            获取默认的内容服务
+            </summary>
+            <param name="virtualPath">要加载内容的虚拟路径</param>
+            <returns>默认的内容服务列表</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.DefaultProviders.GetParser(System.String)">
+            <summary>
+            获取默认的 HTML 解析器实例
+            </summary>
+            <param name="virtualPath">要解析的 HTML 文档虚拟路径</param>
+            <returns>默认的 HTML 解析器</returns>
+        </member>
+        <member name="P:Ivony.Html.Web.DefaultProviders.StaticFileContentProvider">
+            <summary>
+            静态 HTML 文件加载提供程序实例
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.DefaultProviders.WebFormPageContentProvider">
+            <summary>
+            ASP.NET WebForm 文件加载提供程序实例
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Web.HtmlBuildProvider">
+            <summary>
+            将 HTML 文件编译成 IHtmlDocumentProvider 对象的 BuildProvider
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlBuildProvider.GenerateCode(System.Web.Compilation.AssemblyBuilder)">
+            <summary>
+            此方法已被重写以产生代码
+            </summary>
+            <param name="assemblyBuilder">程序集构建器</param>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlBuildProvider.AddReferences(System.Web.Compilation.AssemblyBuilder)">
+            <summary>
+            添加依赖项
+            </summary>
+            <param name="assemblyBuilder"></param>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlBuildProvider.GetGeneratedType(System.CodeDom.Compiler.CompilerResults)">
+            <summary>
+            此方法已被重写以获取编译后的类型
+            </summary>
+            <param name="results"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlBuildProvider.CreateDocumentProviderType">
+            <summary>
+            创建 IDocumentProvider 实现类
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlBuildProvider.CreateName">
+            <summary>
+            创建类型名称
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlBuildProvider.GetParser">
+            <summary>
+            获取解析器
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlBuildProvider.GetDomProviderType">
+            <summary>
+            获取 HTML Dom 提供程序
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Ivony.Html.Web.HtmlBuildProvider.CodeCompilerType">
+            <summary>
+            此属性已被重写以获取默认编译设置
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Web.HtmlHandlerProvider">
+            <summary>
+            提供一组方法，用于查找对文档进行处理的 IHtmlHandler 实例。
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlHandlerProvider.GetHandler(System.String)">
+            <summary>
+            获取指定虚拟路径的 HTML 处理程序
+            </summary>
+            <param name="virtualPath">要获取 HTML 处理程序的虚拟路径</param>
+            <returns>HTML 处理程序</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlHandlerProvider.GetHandlerPath(System.String)">
+            <summary>
+            在 HTML 文档中查找 ViewHandler 路径设置。
+            </summary>
+            <param name="virtualPath">要处理的 HTML 文档的虚拟路径</param>
+            <returns>用于处理 HTML 的视图处理程序路径</returns>
+        </member>
+        <member name="T:Ivony.Html.Web.JumonyPartialHandler">
+            <summary>
+            Jumony 用于处理部分视图请求的处理程序
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Web.JumonyHandler">
+            <summary>
+            Jumony 用于处理 HTTP 请求的处理程序
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.JumonyHandler.System#Web#IHttpHandler#ProcessRequest(System.Web.HttpContext)">
+            <summary>
+            实现 IHttpHandler.ProcessRequest
+            </summary>
+            <param name="context">当前 HTTP 请求的上下文</param>
+        </member>
+        <member name="M:Ivony.Html.Web.JumonyHandler.ProcessRequest(System.Web.HttpContextBase)">
+            <summary>
+            处理 HTTP 请求
+            </summary>
+            <param name="context">HTTP 上下文信息</param>
+        </member>
+        <member name="M:Ivony.Html.Web.JumonyHandler.Trace(System.String,System.String,System.Diagnostics.TraceLevel)">
+            <summary>
+            写入追踪信息
+            </summary>
+            <param name="message">消息内容</param>
+            <param name="category">消息分类</param>
+            <param name="level">消息级别</param>
+        </member>
+        <member name="M:Ivony.Html.Web.JumonyHandler.ProcessRequest(System.String)">
+            <summary>
+            处理 HTTP 请求
+            </summary>
+            <param name="virtualPath">当前要处理的虚拟路径</param>
+        </member>
+        <member name="M:Ivony.Html.Web.JumonyHandler.ProcessRequest(Ivony.Html.Web.HtmlRequestContext,Ivony.Html.Web.IHtmlHandler)">
+            <summary>
+            派生类重写此方法接管 HTTP 请求处理流程
+            </summary>
+            <param name="context">当前 HTML 请求上下文</param>
+            <param name="handler">用于处理 HTML 文档的处理程序</param>
+            <returns>处理后的结果</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.JumonyHandler.LoadDocument(System.String)">
+            <summary>
+            派生类重写此方法自定义加载文档的逻辑
+            </summary>
+            <param name="virtualPath">文档的虚拟路径</param>
+            <returns>加载的文档对象</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.JumonyHandler.GetHandler(System.String)">
+            <summary>
+            获取 HTML 处理程序
+            </summary>
+            <param name="virtualPath">要处理的 HTML 文档的虚拟路径</param>
+            <returns>HTML 处理程序</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.JumonyHandler.DirectVisitError">
+            <summary>
+            产生一个异常，用于说明 HTML 处理程序不能直接访问
+            </summary>
+            <returns>HTTP 404 异常</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.JumonyHandler.GetAdapters(System.Object)">
+            <summary>
+            获取当前适用的渲染代理
+            </summary>
+            <returns>要用于当前渲染过程的渲染代理</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.JumonyHandler.GetFilters(System.String)">
+            <summary>
+            获取 HTML 筛选器
+            </summary>
+            <param name="virtualPath">HTML 文档虚拟路径</param>
+            <returns>HTML 筛选器</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.JumonyHandler.ResolveCache(System.String)">
+            <summary>
+            尝试获取缓存的输出
+            </summary>
+            <returns>缓存的输出</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.JumonyHandler.UpdateCache(Ivony.Web.ICachedResponse)">
+            <summary>
+            刷新输出缓存
+            </summary>
+            <param name="cachedResponse">响应的缓存</param>
+        </member>
+        <member name="M:Ivony.Html.Web.JumonyHandler.CreateResponse(System.String)">
+            <summary>
+            派生类重写此方法自定义创建响应的逻辑
+            </summary>
+            <param name="content">响应内容</param>
+            <returns>响应</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.JumonyHandler.OutputResponse(System.Web.HttpContextBase,Ivony.Web.ICachedResponse)">
+            <summary>
+            派生类重写此方法自定义输出响应的逻辑
+            </summary>
+            <param name="context">HTTP 上下文</param>
+            <param name="responseData">响应信息</param>
+        </member>
+        <member name="M:Ivony.Html.Web.JumonyHandler.AddGeneratorMetaData(Ivony.Html.IHtmlDocument)">
+            <summary>
+            这个方法是用来添加<![CDATA[<meta name="generator" value="jumony" />]]>元素的。
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.JumonyHandler.OnProcessing(Ivony.Html.Web.HtmlRequestContext,Ivony.Html.Web.IHtmlFilter[])">
+            <summary>引发 Processing 事件</summary>
+        </member>
+        <member name="M:Ivony.Html.Web.JumonyHandler.OnProcessed(Ivony.Html.Web.HtmlRequestContext,Ivony.Html.Web.IHtmlFilter[])">
+            <summary>引发 Processed 事件</summary>
+        </member>
+        <member name="M:Ivony.Html.Web.JumonyHandler.OnRendering(Ivony.Html.Web.HtmlRequestContext,Ivony.Html.Web.IHtmlFilter[])">
+            <summary>引发 Rendering 事件</summary>
+        </member>
+        <member name="M:Ivony.Html.Web.JumonyHandler.OnRendered(Ivony.Html.Web.HtmlRequestContext,Ivony.Html.Web.IHtmlFilter[])">
+            <summary>引发 Rendered 事件</summary>
+        </member>
+        <member name="M:Ivony.Html.Web.JumonyHandler.Dispose">
+            <summary>
+            执行与释放或重置非托管资源相关的应用程序定义的任务
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.JumonyHandler.IsReusable">
+            <summary>
+            指定此实例是否可以被复用，默认值为false
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.JumonyHandler.RequestContext">
+            <summary>
+            获取当前请求上下文
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.JumonyHandler.HttpContext">
+            <summary>
+            获取当前 HTTP 请求上下文
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.JumonyHandler.CachePolicy">
+            <summary>
+            获取当前请求的缓存策略
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.JumonyPartialHandler.CreateScope(System.String)">
+            <summary>
+            重写 CreateScope 方法，获取文档的 body 元素
+            </summary>
+            <param name="virtualPath">HTML 文档的虚拟路径</param>
+            <returns>文档的处理范围</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.JumonyPartialHandler.CreateResponse(System.String)">
+            <summary>
+            重写 CreateResponse 方法，创建部分视图响应结果
+            </summary>
+            <param name="content">响应内容</param>
+            <returns>可缓存的响应结果</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.JumonyPartialHandler.RenderPartial(System.Web.HttpContextBase,System.String)">
+            <summary>
+            渲染部分视图
+            </summary>
+            <param name="context">当前 HTTP 请求上下文</param>
+            <param name="virtualPath">部分视图的虚拟路径</param>
+            <returns>渲染结果</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.JumonyPartialHandler.RenderPartial(System.Web.HttpContextBase,System.String,Ivony.Html.Web.IHtmlHandler)">
+            <summary>
+            渲染部分视图
+            </summary>
+            <param name="context">当前 HTTP 请求上下文</param>
+            <param name="virtualPath">当前要处理的部分视图的虚拟路径</param>
+            <param name="handler">当前部分视图的 HTML 处理程序</param>
+            <returns>渲染结果</returns>
+        </member>
+        <member name="P:Ivony.Html.Web.JumonyPartialHandler.HttpContext">
+            <summary>
+            获取当前 HTTP 请求
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Web.JumonyWebConfiguration">
+            <summary>
+            Jumony Web 的一些参数配置
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.JumonyWebConfiguration.PartialRenderTimeout">
+            <summary>
+            设置部分视图渲染超时时间。
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.JumonyWebConfiguration.IgnorePartialRenderException">
+            <summary>
+            指示是否应当忽略部分视图渲染时出现的异常
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.JumonyWebConfiguration.Configuration">
+            <summary>
+            获取当前的配置
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Web.HtmlHandler">
+            <summary>
+            HTML 处理程序基类，协助实现 HTML 处理程序
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Web.HtmlHandlerBase">
+            <summary>
+            处理 HTML 文档或文档部分的处理程序基类
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Web.HttpHandlerBase">
+            <summary>
+            所有处理 HTTP 请求的处理程序基类
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.HttpHandlerBase.MapPath(System.String)">
+            <summary>
+            返回与 Web 服务器上的指定虚拟路径相对应的物理文件路径
+            </summary>
+            <param name="virtualPath">Web 服务器的虚拟路径</param>
+            <returns>与 path 相对应的物理文件路径</returns>
+        </member>
+        <member name="P:Ivony.Html.Web.HttpHandlerBase.HttpContext">
+            <summary>
+            获取当前请求的 HTTP 上下文
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.HttpHandlerBase.Request">
+            <summary>
+            获取请求的页的 HttpRequest 对象
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.HttpHandlerBase.Response">
+            <summary>
+            获取 HttpResponse 对象。该对象使您得以将 HTTP 响应数据发送到客户端，并包含有关该响应的信息
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.HttpHandlerBase.Server">
+            <summary>
+            获取 Server 对象，它是 HttpServerUtility 类的实例
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.HttpHandlerBase.Application">
+            <summary>
+            为当前 Web 请求获取 HttpApplicationState 对象
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.HttpHandlerBase.Trace">
+            <summary>
+            为当前 Web 请求获取 TraceContext 对象
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.HttpHandlerBase.Cache">
+            <summary>
+            获取与该页驻留的应用程序关联的 Cache 对象
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlHandlerBase.Find(System.String)">
+            <summary>
+            在处理范畴内查找符合选择器的元素
+            </summary>
+            <param name="expression">CSS 选择器表达式</param>
+            <returns>符合选择器的元素</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlHandlerBase.FindSingle(System.String)">
+            <summary>
+            在处理范畴内查找符合选择器的唯一元素
+            </summary>
+            <param name="expression">CSS 选择器表达式</param>
+            <returns>符合选择器的唯一元素</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlHandlerBase.FindFirst(System.String)">
+            <summary>
+            在处理范畴内查找符合选择器的首个元素
+            </summary>
+            <param name="expression">CSS 选择器表达式</param>
+            <returns>符合选择器的首个元素</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlHandlerBase.FindLast(System.String)">
+            <summary>
+            在处理范畴内查找符合选择器的最后一个元素
+            </summary>
+            <param name="expression">CSS 选择器表达式</param>
+            <returns>符合选择器的最后一个元素</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlHandlerBase.ForFirst(System.String,System.Action{Ivony.Html.IHtmlElement})">
+            <summary>
+            对处理范畴内查找符合选择器的首个元素进行处理
+            </summary>
+            <param name="expression">CSS 选择器表达式</param>
+            <param name="action">要进行的处理</param>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlHandlerBase.ForSingle(System.String,System.Action{Ivony.Html.IHtmlElement})">
+            <summary>
+            对处理范畴内查找符合选择器的唯一元素进行处理
+            </summary>
+            <param name="expression">CSS 选择器表达式</param>
+            <param name="action">要进行的处理</param>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlHandlerBase.ForLast(System.String,System.Action{Ivony.Html.IHtmlElement})">
+            <summary>
+            对处理范畴内查找符合选择器的最后一个元素进行处理
+            </summary>
+            <param name="expression">CSS 选择器表达式</param>
+            <param name="action">要进行的处理</param>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlHandlerBase.ForAll(System.String,System.Action{Ivony.Html.IHtmlElement})">
+            <summary>
+            对处理范畴内查找符合选择器的所有元素进行处理
+            </summary>
+            <param name="expression">CSS 选择器表达式</param>
+            <param name="action">要进行的处理</param>
+        </member>
+        <member name="P:Ivony.Html.Web.HtmlHandlerBase.HtmlScope">
+            <summary>
+            获取要处理的范畴
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Web.IHtmlHandler">
+            <summary>
+            定义一个 HTML 文档处理程序
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.IHtmlHandler.ProcessScope(Ivony.Html.Web.HtmlRequestContext)">
+            <summary>
+            处理 HTML 文档
+            </summary>
+            <param name="context">当前请求上下文</param>
+        </member>
+        <member name="F:Ivony.Html.Web.HtmlHandler.PostbackFormSign">
+            <summary>
+            定义用于确定回发表单的标识。
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlHandler.ProcessScope(Ivony.Html.Web.HtmlRequestContext)">
+            <summary>
+            处理 HTML 范围
+            </summary>
+            <param name="context">当前 HTML 请求上下文</param>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlHandler.DataBind">
+            <summary>
+            进行数据绑定
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlHandler.PreProcess">
+            <summary>
+            派生类重写此方法对页面元素进行初始化。
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlHandler.ProcessGet">
+            <summary>
+            派生类重写此方法对 GET 请求进行处理。
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlHandler.ProcessPost">
+            <summary>
+            派生类重写此方法对 POST 请求进行处理。
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlHandler.PostProcess">
+            <summary>
+            派生类重写此方法，在页面处理的最后阶段进行处理。
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlHandler.Dispose">
+            <summary>
+            此方法用于实现销毁对象的一些操作。
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlHandler.ProcessRequest(System.Web.HttpContext)">
+            <summary>
+            实现此方法当使用此处理程序直接处理 HTTP 请求时，直接抛出异常。
+            </summary>
+            <param name="context">HTTP 请求上下文</param>
+        </member>
+        <member name="P:Ivony.Html.Web.HtmlHandler.DataModel">
+            <summary>
+            获取或设置当前数据上下文
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.HtmlHandler.HtmlScope">
+            <summary>
+            要进行处理的 HTML 范围
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.HtmlHandler.Context">
+            <summary>
+            当前 HTML 请求上下文
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.HtmlHandler.HttpContext">
+            <summary>
+            当前 HTTP 请求上下文
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.HtmlHandler.IsReusable">
+            <summary>
+            此属性指示该处理程序是否可以重用，其始终返回 false。
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Web.HtmlRequestContext">
+            <summary>
+            HTML 请求上下文
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlRequestContext.#ctor(System.Web.HttpContextBase,System.String,Ivony.Html.IHtmlContainer)">
+            <summary>
+            创建 HtmlRequestContext 实例
+            </summary>
+            <param name="httpContext">当前 HTTP 请求上下文</param>
+            <param name="virtualPath">当前处理的文档的虚拟路径</param>
+            <param name="scope">当前要处理的 HTML 文档范围</param>
+        </member>
+        <member name="P:Ivony.Html.Web.HtmlRequestContext.HttpContext">
+            <summary>
+            当前 HTTP 请求
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.HtmlRequestContext.VirtualPath">
+            <summary>
+            当前处理的文档的虚拟路径
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.HtmlRequestContext.Scope">
+            <summary>
+            要处理的 HTML 范围
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Web.HtmlServices">
+            <summary>
+            提供 Jumony Web 所有提供程序的管理和注册的静态类
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlServices.LoadContent(System.String)">
+            <summary>
+            加载 HTML 文档内容
+            </summary>
+            <param name="virtualPath">文档的虚拟路径</param>
+            <returns>HTML 内容加载结果</returns>
+        </member>
+        <member name="F:Ivony.Html.Web.HtmlServices.Default">
+            <summary>
+            提供所有默认服务的对象，此属性仅供测试用途。
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlServices.LoadDocument(System.String)">
+            <summary>
+            加载 HTML 文档
+            </summary>
+            <param name="virtualPath">文档的虚拟路径</param>
+            <returns>HTML 文档对象</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlServices.LoadDocument(System.String,System.Web.Caching.CacheDependency@)">
+            <summary>
+            加载 HTML 文档
+            </summary>
+            <param name="virtualPath">文档的虚拟路径</param>
+            <param name="cacheDependency">若文档已被缓存，获取缓存依赖项</param>
+            <returns>HTML 文档对象</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlServices.LoadDocument(System.String,System.String@)">
+            <summary>
+            加载 HTML 文档
+            </summary>
+            <param name="virtualPath">文档的虚拟路径</param>
+            <param name="cacheKey">若文档已被缓存，获取缓存键</param>
+            <returns>HTML 文档对象</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlServices.TryGetDocumentProvider(System.String)">
+            <summary>
+            尝试获取指定地址 HTML 文档的文档对象提供程序
+            </summary>
+            <param name="virtualPath">HTML 文档虚拟路径</param>
+            <returns>若添加了 HtmlDocumentProvider 设置，并能将文档编译为 IHtmlDocumentProvider 对象，则返回，否则返回 null</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlServices.GetParser(Ivony.Html.Web.HtmlContentResult)">
+            <summary>
+            获取用于分析 HTML 文档的分析器
+            </summary>
+            <param name="contentResult">文档内容加载结果</param>
+            <returns>HTML 分析器相关信息</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlServices.ParseDocument(Ivony.Html.Web.HtmlContentResult)">
+            <summary>
+            分析 HTML 文档，此方法会根据情况缓存文档模型
+            </summary>
+            <param name="contentResult">文档加载结果</param>
+            <returns>HTML 文档对象</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlServices.ParseDocument(Ivony.Html.Web.HtmlContentResult,Ivony.Html.IHtmlParser)">
+            <summary>
+            分析 HTML 文档，此方法会根据情况缓存文档模型
+            </summary>
+            <param name="contentResult">文档加载结果</param>
+            <param name="parser">HTML 解析器</param>
+            <returns>HTML 文档对象</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlServices.GetCachePolicy(System.Web.HttpContextBase)">
+            <summary>
+            获取当前请求的缓存策略
+            </summary>
+            <param name="context">当前 HTTP 请求</param>
+            <returns>适用于当前请求的缓存策略</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlServices.CreateCacheDependency(System.String)">
+            <summary>
+            创建指定虚拟路径文件的缓存依赖项，当文件发生变化时可以清除缓存。
+            </summary>
+            <param name="virtualPath">需要监视的文件虚拟路径</param>
+            <returns>监视路径的缓存依赖项</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlServices.CreateCacheDependency(System.Web.Hosting.VirtualPathProvider,System.String)">
+            <summary>
+            创建指定虚拟路径文件的缓存依赖项，当文件发生变化时可以清除缓存。
+            </summary>
+            <param name="provider">当前所使用的虚拟路径提供程序</param>
+            <param name="virtualPath">需要监视的文件虚拟路径</param>
+            <returns>监视路径的缓存依赖项</returns>
+        </member>
+        <member name="T:Ivony.Html.Web.IHandlerWrapper">
+            <summary>
+            定义处理程序包装，实现此接口声明自己是一个处理程序的包装，不在该实例上查找各种处理方法。
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.IHandlerWrapper.Handler">
+            <summary>
+            获取被包装的处理程序
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Web.IHtmlContentProvider">
+            <summary>
+            定义 HTML 内容提供程序
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.IHtmlContentProvider.LoadContent(System.String)">
+            <summary>
+            加载 HTML 内容
+            </summary>
+            <param name="virtualPath">要加载内容的虚拟路径</param>
+            <returns>加载的 HTML 内容</returns>
+        </member>
+        <member name="T:Ivony.Html.Web.HtmlContentResult">
+            <summary>
+            IHtmlContentProvider 的内容加载结果
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlContentResult.#ctor(System.String)">
+            <summary>
+            创建 HtmlContentResult 实例
+            </summary>
+            <param name="content">加载的内容</param>
+        </member>
+        <member name="M:Ivony.Html.Web.HtmlContentResult.#ctor(System.String,System.String)">
+            <summary>
+            创建 HtmlContentResult 实例
+            </summary>
+            <param name="content">加载的内容</param>
+            <param name="cacheKey">缓存内容所使用的缓存键</param>
+        </member>
+        <member name="P:Ivony.Html.Web.HtmlContentResult.Content">
+            <summary>
+            HTML 文本内容
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.HtmlContentResult.CacheKey">
+            <summary>
+            获取缓存时使用的索引键
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.HtmlContentResult.Provider">
+            <summary>
+            获取产生此结果的 HtmlContentProvider
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.HtmlContentResult.VirtualPath">
+            <summary>
+            加载内容的虚拟路径
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Web.IHtmlDocumentProvider">
+            <summary>
+            IHtmlDocument 对象创建适配器
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.IHtmlDocumentProvider.CreateDocument">
+            <summary>
+            创建 IHtmlDocument 对象
+            </summary>
+            <returns>创建的文档对象</returns>
+        </member>
+        <member name="T:Ivony.Html.Web.IHtmlFilter">
+            <summary>
+            HTML 处理程序筛选器，实现此接口并注册类型可以在处理 HTML 文档时插入自定义的逻辑
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.IHtmlFilter.OnProcessing(Ivony.Html.Web.HtmlRequestContext)">
+            <summary>
+            当处理 HTML 文档之前需要执行的逻辑
+            </summary>
+            <param name="context">当前 HTML 请求上下文</param>
+        </member>
+        <member name="M:Ivony.Html.Web.IHtmlFilter.OnProcessed(Ivony.Html.Web.HtmlRequestContext)">
+            <summary>
+            当处理 HTML 文档完毕后需要执行的逻辑
+            </summary>
+            <param name="context">当前 HTML 请求上下文</param>
+        </member>
+        <member name="M:Ivony.Html.Web.IHtmlFilter.OnRendering(Ivony.Html.Web.HtmlRequestContext)">
+            <summary>
+            当渲染 HTML 文档之前需要执行的逻辑
+            </summary>
+            <param name="context">当前 HTML 请求上下文</param>
+        </member>
+        <member name="M:Ivony.Html.Web.IHtmlFilter.OnRendered(Ivony.Html.Web.HtmlRequestContext)">
+            <summary>
+            当渲染 HTML 文档完毕后需要执行的逻辑
+            </summary>
+            <param name="context">当前 HTML 请求上下文</param>
+        </member>
+        <member name="T:Ivony.Html.Web.IHtmlFilterProvider">
+            <summary>
+            HTML 筛选器提供程序
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.IHtmlFilterProvider.GetFilters">
+            <summary>
+            获取当前可用的筛选器列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Ivony.Html.Web.IAsyncHtmlHandler">
+            <summary>
+            定义一个异步的 HTML 文档处理程序
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.IAsyncHtmlHandler.ProcessScopeAsync(Ivony.Html.Web.HtmlRequestContext)">
+            <summary>
+            异步处理 HTML 文档
+            </summary>
+            <param name="context">当前请求上下文</param>
+            <returns>管理异步处理请求的任务</returns>
+        </member>
+        <member name="T:Ivony.Html.Web.IHtmlHandlerProvider">
+            <summary>
+            HTML 处理程序提供程序
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.IHtmlHandlerProvider.GetHandler(System.String)">
+            <summary>
+            获取 HTML 处理程序
+            </summary>
+            <param name="virtualPath">虚拟路径</param>
+            <returns>需要处理该 HTML 文档的 HTML 处理程序</returns>
+        </member>
+        <member name="T:Ivony.Html.Web.IHtmlParserProvider">
+            <summary>
+            HTML 解析器提供程序
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.IHtmlParserProvider.GetParser(System.String,System.String)">
+            <summary>
+            获取一个 HTML 解析器
+            </summary>
+            
+            <param name="virtualPath">HTML 内容虚拟路径</param>
+            <param name="htmlContent">HTML 内容</param>
+            <returns>HTML 解析器结果</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.IHtmlParserProvider.ReleaseParser(Ivony.Html.IHtmlParser)">
+            <summary>
+            释放解析器实例
+            </summary>
+            <param name="parser"></param>
+        </member>
+        <member name="T:Ivony.Html.Web.IHtmlRequestRoute">
+            <summary>
+            标记当前路由对象是可以分配 HTML 请求的
+            </summary>
+            <remarks>
+            这是一个标记接口，没有任何需要实现的成员，当进入 JumonyHandler 时，会自动检查当前的路由对象是否实现了这个接口，若没有实现接口，则 JumonyHandler 会认为这是非法请求。
+            </remarks>
+        </member>
+        <member name="T:Ivony.Html.Web.JumonyRequestRoute">
+            <summary>
+            辅助实现 RequestMapping 机制的路由
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.JumonyRequestRoute.GetRouteData(System.Web.HttpContextBase)">
+            <summary>
+            获取路由信息，将对请求进行 RequestMapping 的结果包装成路由信息
+            </summary>
+            <param name="httpContext">当前 HTTP 请求上下文</param>
+            <returns>路由信息</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.JumonyRequestRoute.GetVirtualPath(System.Web.Routing.RequestContext,System.Web.Routing.RouteValueDictionary)">
+            <summary>
+            获取虚拟路径，此方法总是返回 null
+            </summary>
+            <param name="requestContext">当前请求上下文</param>
+            <param name="values">路由值</param>
+            <returns>虚拟路径数据，总是返回 null</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.JumonyRequestRoute.CreateRequestContext(System.Web.HttpContextBase,System.String)">
+            <summary>
+            根据当前 HTTP 请求和需要处理的虚拟路径，创建 RequestContext 对象
+            </summary>
+            <param name="context">当前 HTTP 请求上下文</param>
+            <param name="virtualPath">虚拟路径</param>
+            <returns>创建的 RequestContetx 对象</returns>
+        </member>
+        <member name="P:Ivony.Html.Web.JumonyRequestRoute.VirtualPathToken">
+            <summary>
+            用于在路由数据中标识虚拟路径的键值
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.JumonyRequestRoute.HtmlHandlerToken">
+            <summary>
+            用于在路由数据中标识处理程序的键值
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.JumonyRequestRoute.VirtualPathProvider">
+            <summary>
+            获取当前的虚拟路径提供程序
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.JumonyRequestRoute.Instance">
+            <summary>
+            获取 JumonyRequestRoute 的实例
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Web.JumonyRouteHandler">
+            <summary>
+            映射 HTML 文件路由请求到 HTML 处理程序
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.JumonyRouteHandler.GetHttpHandler(System.Web.Routing.RequestContext)">
+            <summary>
+            实现 GetHttpHandler 方法，返回 Jumony HTML 页面处理程序
+            </summary>
+            <param name="requestContext">当前请求上下文</param>
+            <returns>返回 Jumony HTML 页面处理程序</returns>
+        </member>
+        <member name="P:Ivony.Html.Web.JumonyRouteHandler.Instance">
+            <summary>
+            获取 JumonyRouteHandler 实例
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Web.PartialResponse">
+            <summary>
+            部分视图的响应结果
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.PartialResponse.Apply(System.Web.HttpResponseBase)">
+            <summary>
+            将响应内容应用到当前响应流
+            </summary>
+            <param name="response">当前响应</param>
+        </member>
+        <member name="P:Ivony.Html.Web.PartialResponse.Content">
+            <summary>
+            响应内容
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Web.PartialRenderAdapter">
+            <summary>
+            用于渲染部分视图的 HTML 渲染代理
+            </summary>
+        </member>
+        <member name="F:Ivony.Html.Web.PartialRenderAdapter.partialExecutorMethodPrefix">
+            <summary>
+            处理 Partial 的方法名称前缀
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.PartialRenderAdapter.#ctor(System.Web.HttpContextBase,System.Object)">
+            <summary>
+            创建 PartialRenderAdapter 实例
+            </summary>
+            <param name="context">当前 HTTP 请求上下文</param>
+            <param name="handler">视图处理程序对象，用于获取自定义分部视图处理方法</param>
+        </member>
+        <member name="M:Ivony.Html.Web.PartialRenderAdapter.Render(Ivony.Html.IHtmlElement,Ivony.Html.IHtmlRenderContext)">
+            <summary>
+            渲染 partial 标签
+            </summary>
+            <param name="element">partial 标签</param>
+            <param name="context">渲染上下文</param>
+        </member>
+        <member name="M:Ivony.Html.Web.PartialRenderAdapter.Trace(System.String)">
+            <summary>
+            写入一条追踪信息
+            </summary>
+            <param name="message">追踪消息</param>
+        </member>
+        <member name="M:Ivony.Html.Web.PartialRenderAdapter.RenderPartial(Ivony.Html.IHtmlElement,System.IO.TextWriter)">
+            <summary>
+            渲染部分视图（派生类可以重写此方法接管 partial 处理逻辑）。
+            </summary>
+            <param name="partialElement">partial 元素</param>
+            <param name="writer">输出渲染结果的 TextWriter 对象</param>
+        </member>
+        <member name="M:Ivony.Html.Web.PartialRenderAdapter.RenderPartialAsync(Ivony.Html.IHtmlElement,System.Exception@)">
+            <summary>
+            异步渲染部分视图
+            </summary>
+            <param name="partialElement">partial 元素</param>
+            <param name="exception">渲染过程中产生的异常</param>
+            <returns>渲染结果</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.PartialRenderAdapter.RenderPartial(Ivony.Html.IHtmlElement)">
+            <summary>
+            渲染部分视图（重写此方法以实现自定义输出 partial 元素）
+            </summary>
+            <param name="partialElement">partial 元素</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ivony.Html.Web.PartialRenderAdapter.RenderNamedPartial(Ivony.Html.IHtmlElement,System.String)">
+            <summary>
+            渲染命名的部分视图
+            </summary>
+            <param name="partialElement">要渲染的　partial 元素</param>
+            <param name="name">部分视图的名称</param>
+            <returns>渲染结果</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.PartialRenderAdapter.RenderVirtualPath(System.String)">
+            <summary>
+            渲染指定了路径的部分视图
+            </summary>
+            <param name="path">部分视图的路径</param>
+            <returns>渲染结果</returns>
+        </member>
+        <member name="P:Ivony.Html.Web.PartialRenderAdapter.HttpContext">
+            <summary>
+            获取当前 HTTP 请求上下文
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.PartialRenderAdapter.Handler">
+            <summary>
+            获取当前 HTML 处理程序
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.PartialRenderAdapter.PartialExecutors">
+            <summary>
+            当前处理程序中定义的部分视图执行程序
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.PartialRenderAdapter.CssSelector">
+            <summary>
+            重写 CssSelector 属性，用于选取 partial 标签
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Web.PartialExecutor">
+            <summary>
+            定义部分视图执行程序
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.PartialExecutor.#ctor(System.Reflection.MethodInfo)">
+            <summary>
+            创建 PartialExecutor 对象
+            </summary>
+            <param name="method">用于处理分部视图的执行方法</param>
+        </member>
+        <member name="M:Ivony.Html.Web.PartialExecutor.Execute(System.Object,Ivony.Html.IHtmlElement)">
+            <summary>
+            执行分部页获取渲染结果
+            </summary>
+            <param name="host">分部视图执行方法所属的对象</param>
+            <param name="partialElement">定义分部页的元素</param>
+            <returns></returns>
+        </member>
+        <member name="P:Ivony.Html.Web.PartialExecutor.Name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Web.ResourceManager">
+            <summary>
+            管理网站的样式和脚本资源
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.ResourceManager.#ctor(System.String)">
+            <summary>
+            创建资源管理器
+            </summary>
+            <param name="virtualPath">要查找资源的虚拟路径</param>
+        </member>
+        <member name="M:Ivony.Html.Web.ResourceManager.AddAllReference(Ivony.Html.IHtmlDocument,System.Boolean)">
+            <summary>
+            添加所有资源引用
+            </summary>
+            <param name="document"></param>
+            <param name="clearReferenceFirst"></param>
+        </member>
+        <member name="M:Ivony.Html.Web.ResourceManager.ClearAllReference(Ivony.Html.IHtmlDocument,System.Boolean)">
+            <summary>
+            清除文档中所有的资源文件引用
+            </summary>
+            <param name="document">要清除资源文件引用的文档</param>
+            <param name="headScopeOnly">是否仅清除 &lt;head&gt; 元素内部的引用</param>
+        </member>
+        <member name="P:Ivony.Html.Web.ResourceManager.AllCssStyleFiles">
+            <summary>
+            获取所有 CSS 样式资源的路径
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Web.ResourceManager.AllJavaScriptFiles">
+            <summary>
+            获取所有 JavaScript 脚本资源的路径
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Web.StaticFileContentProvider">
+            <summary>
+            静态文件内容加载器，用于从静态文件中加载 HTML 内容，会自动缓存
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.StaticFileContentProvider.LoadContent(System.String)">
+            <summary>
+            从静态文件中加载 HTML 内容
+            </summary>
+            <param name="virtualPath">静态文件的虚拟路径</param>
+            <returns>加载的内容结果</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.StaticFileContentProvider.LoadContent(System.Web.Hosting.VirtualPathProvider,System.String)">
+            <summary>
+            利用指定 VirtualPathProvider 将虚拟路径所指向文件当作静态文件加载。
+            </summary>
+            <param name="provider">指定的 VirtualPathProvider</param>
+            <param name="virtualPath">虚拟路径</param>
+            <returns>加载结果</returns>
+        </member>
+        <member name="M:Ivony.Html.Web.StaticFileContentProvider.LoadContent(System.Web.Hosting.VirtualFile)">
+            <summary>
+            从指定虚拟文件中读取文本内容
+            </summary>
+            <param name="file">虚拟文件</param>
+            <returns></returns>
+        </member>
+        <member name="T:Ivony.Html.Web.WebFormPageContentProvider">
+            <summary>
+            ASPX 文件内容加载器，用于从 ASPX 动态页面中加载内容
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.WebFormPageContentProvider.LoadContent(System.String)">
+            <summary>
+            读取 ASPX 页面所呈现的 HTML 内容
+            </summary>
+            <param name="virtualPath">ASPX 文件路径</param>
+            <returns>ASPX 页面所呈现的 HTML 内容</returns>
+        </member>
+        <member name="T:Ivony.Html.Web.WebParser">
+            <summary>
+            专门用于 Web UI 引擎的 HTML 解析器
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Web.WebParser.IsCDataElement(Ivony.Html.Parser.ContentModels.HtmlBeginTag)">
+            <summary>
+            重写此方法以确保 &lt;partial&gt; 标签被视为CData元素。
+            </summary>
+            <param name="tag"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Ivony.Html.Web.WebExtenions">
+            <summary>
+            提供一些 Web 相关的扩展方法。
+            </summary>
+        </member>
+    </members>
+</doc>

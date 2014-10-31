@@ -1,0 +1,619 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ivony.Html.Binding</name>
+    </assembly>
+    <members>
+        <member name="T:Ivony.Html.Binding.BindingExpression">
+            <summary>
+            定义绑定表达式，绑定表达式可以由属性值或者元素来定义。
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Binding.BindingExpression.GetValues(Ivony.Html.Binding.IBindingExpressionEvaluator)">
+            <summary>
+            获取所有参数的值
+            </summary>
+            <param name="evaluator">绑定表达式计算转换器 （一般是BindingContext）</param>
+            <returns>所有参数和参数值</returns>
+        </member>
+        <member name="M:Ivony.Html.Binding.BindingExpression.TryGetValue``1(Ivony.Html.Binding.IBindingExpressionEvaluator,System.String,``0@,System.Boolean)">
+            <summary>
+            尝试获取参数指定类型的值
+            </summary>
+            <typeparam name="T">值类型</typeparam>
+            <param name="evaluator">绑定表达式计算转换器 （一般是BindingContext）</param>
+            <param name="name">参数名称</param>
+            <param name="value">获取到的参数值</param>
+            <param name="throwIfConvertFailed">当类型转换失败的时候是否应当抛出异常</param>
+            <returns>是否成功获取</returns>
+        </member>
+        <member name="M:Ivony.Html.Binding.BindingExpression.TryGetValue(Ivony.Html.Binding.IBindingExpressionEvaluator,System.String,System.Object@)">
+            <summary>
+            尝试获取参数值
+            </summary>
+            <param name="evaluator">绑定表达式计算转换器 （一般是BindingContext）</param>
+            <param name="name">参数名称</param>
+            <param name="value">获取到的参数值</param>
+            <returns>是否成功获取</returns>
+        </member>
+        <member name="M:Ivony.Html.Binding.BindingExpression.GetValue``1(Ivony.Html.Binding.IBindingExpressionEvaluator,System.String)">
+            <summary>
+            获取指定类型的值
+            </summary>
+            <typeparam name="T">值类型</typeparam>
+            <param name="evaluator">绑定表达式计算转换器 （一般是BindingContext）</param>
+            <param name="name">参数名称</param>
+            <returns>是否成功获取</returns>
+        </member>
+        <member name="M:Ivony.Html.Binding.BindingExpression.ParseExpression(System.String)">
+            <summary>
+            解析绑定表达式
+            </summary>
+            <param name="expression">要从中解析的绑定表达式的字符串</param>
+            <returns>解析后的结果</returns>
+        </member>
+        <member name="M:Ivony.Html.Binding.BindingExpression.ParseExpression(System.String,System.Int32)">
+            <summary>
+            解析绑定表达式
+            </summary>
+            <param name="expression">要从中解析的绑定表达式的字符串</param>
+            <param name="index">解析绑定表达式的开始位置</param>
+            <returns>解析后的结果</returns>
+        </member>
+        <member name="P:Ivony.Html.Binding.BindingExpression.Name">
+            <summary>
+            表达式名称
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Binding.BindingExpression.Arguments">
+            <summary>
+            派生类实现此属性提供参数值列表
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Binding.BindingExpression.BindingExpressionParser">
+            <summary>
+            绑定表达式解析器
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Binding.BindingExpression.BindingExpressionParser.Parse(System.String,System.Int32)">
+            <summary>
+            解析绑定表达式为 BindingExpression 对象
+            </summary>
+            <param name="text">要分析的文本</param>
+            <param name="index">开始分析的位置</param>
+            <returns>解析出的 BindingExpression 对象</returns>
+        </member>
+        <member name="T:Ivony.Html.Binding.IHtmlElementBinder">
+            <summary>
+            定义特定元素数据绑定器，对特定的元素直接接管数据绑定。
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Binding.IHtmlElementBinder.BindElement(Ivony.Html.Binding.HtmlBindingContext,Ivony.Html.IHtmlElement)">
+            <summary>
+            接管元素的数据绑定
+            </summary>
+            <param name="context">当前数据绑定上下文</param>
+            <param name="element">当前正在执行数据绑定的元素</param>
+        </member>
+        <member name="P:Ivony.Html.Binding.IHtmlElementBinder.ElementName">
+            <summary>
+            要进行处理的元素的名称
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Binding.HtmlElementBinderCollection">
+            <summary>
+            定义 IHtmlElementBinder 的容器
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Binding.HtmlElementBinderCollection.#ctor">
+            <summary>
+            创建 HtmlElementBinderCollection 对象
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Binding.HtmlElementBinderCollection.#ctor(System.Collections.Generic.IEnumerable{Ivony.Html.Binding.IHtmlElementBinder})">
+            <summary>
+            创建 HtmlElementBinderCollection 对象
+            </summary>
+            <param name="binders">要添加的绑定器</param>
+        </member>
+        <member name="M:Ivony.Html.Binding.HtmlElementBinderCollection.GetKeyForItem(Ivony.Html.Binding.IHtmlElementBinder)">
+            <summary>
+            从 IHtmlElementBinder 对象中提取用作键的元素名称
+            </summary>
+            <param name="item">IHtmlElementBinder 对象</param>
+            <returns>用作键的元素名称</returns>
+        </member>
+        <member name="T:Ivony.Html.Binding.IHtmlBindingContextProvider">
+            <summary>
+            HTML 绑定上下文提供程序
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Binding.IHtmlBindingContextProvider.CreateBindingContext(Ivony.Html.Binding.HtmlBindingContext,Ivony.Html.IHtmlContainer,System.Object)">
+            <summary>
+            创建 HTML 绑定上下文
+            </summary>
+            <param name="bindingContext">当前绑定上下文（即父级上下文）</param>
+            <param name="scope">要创建绑定上下文的 HTML 范围</param>
+            <param name="datamodel">要创建绑定上下文的数据上下文</param>
+            <returns>绑定上下文</returns>
+        </member>
+        <member name="P:Ivony.Html.Binding.IHtmlBindingContextProvider.ModelType">
+            <summary>
+            可以创建绑定上下文的模型类型
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Binding.HtmlListBindingContextProvider.ModelType">
+            <summary>
+            获取所适用的数据模型类型
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Binding.EvalExpressionBinder">
+            <summary>
+            处理{eval xxx}表达式的绑定器
+            </summary>
+            <example>
+            &lt;a href="{eval path=Link}"&gt;Link&lt;/a&gt;;
+            </example>
+        </member>
+        <member name="T:Ivony.Html.Binding.IExpressionBinder">
+            <summary>
+            定义处理绑定表达式的绑定器
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Binding.IExpressionBinder.GetValue(Ivony.Html.Binding.HtmlBindingContext,Ivony.Html.Binding.BindingExpression)">
+            <summary>
+            进行绑定，根据给定的参数获取需要绑定的值
+            </summary>
+            <param name="context">当前绑定上下文</param>
+            <param name="expression">绑定表达式</param>
+            <returns>绑定的值</returns>
+        </member>
+        <member name="P:Ivony.Html.Binding.IExpressionBinder.ExpressionName">
+            <summary>
+            要处理的绑定表达式的名称
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Binding.IElementExpressionBinder">
+            <summary>
+            这是一个标记接口，用于指示绑定表达式绑定器可用于元素表达的绑定表达式。
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Binding.EvalExpressionBinder.GetDataObject(Ivony.Html.Binding.HtmlBindingContext,Ivony.Html.Binding.BindingExpression)">
+            <summary>
+            根据绑定参数获取数据对象
+            </summary>
+            <param name="context">绑定上下文</param>
+            <param name="expression">绑定表达式</param>
+            <returns>数据对象</returns>
+        </member>
+        <member name="M:Ivony.Html.Binding.EvalExpressionBinder.GetValue(Ivony.Html.Binding.HtmlBindingContext,Ivony.Html.Binding.BindingExpression)">
+            <summary>
+            获取绑定值
+            </summary>
+            <param name="context">绑定上下文</param>
+            <param name="expression">绑定表达式</param>
+            <returns>绑定值</returns>
+        </member>
+        <member name="M:Ivony.Html.Binding.EvalExpressionBinder.TryFormatValue(System.Object,Ivony.Html.Binding.HtmlBindingContext,Ivony.Html.Binding.BindingExpression)">
+            <summary>
+            尝试格式化绑定值
+            </summary>
+            <param name="dataObject">要进行格式化的数据对象</param>
+            <param name="context">当前绑定上下文</param>
+            <param name="expression">绑定表达式</param>
+            <returns>若绑定表达式定义了 format 参数，则返回格式化后的结果，否则返回 null</returns>
+        </member>
+        <member name="T:Ivony.Html.Binding.ElementExpression">
+            <summary>
+            代表用元素表示的绑定表达式
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Binding.ElementExpression.#ctor(Ivony.Html.IHtmlElement)">
+            <summary>
+            根据元素创建一个元素绑定表达式
+            </summary>
+            <param name="element"></param>
+        </member>
+        <member name="P:Ivony.Html.Binding.ElementExpression.Name">
+            <summary>
+            绑定表达式名称
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Binding.ElementExpression.Arguments">
+            <summary>
+            绑定表达式参数
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Binding.EvalListExpressionBinder">
+            <summary>
+            处理{eval-list xxx}绑定表达式的绑定器
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Binding.IBindingExpressionEvaluator">
+            <summary>
+            定义一个可以将 BindingExpression 对象转换为值的转换器，一般是绑定上下文
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Binding.IBindingExpressionEvaluator.TryConvertValue``1(System.Object,``0@)">
+            <summary>
+            尝试将字符串转换为指定类型的值
+            </summary>
+            <typeparam name="T">值类型</typeparam>
+            <param name="obj">要转换的源对象</param>
+            <param name="value">转换后的值</param>
+            <returns>是否转换成功</returns>
+        </member>
+        <member name="M:Ivony.Html.Binding.IBindingExpressionEvaluator.GetValue(Ivony.Html.Binding.BindingExpression)">
+            <summary>
+            从 BindingExpression 获取需要绑定的值
+            </summary>
+            <param name="expression">绑定表达式</param>
+            <returns>获取到的绑定值</returns>
+        </member>
+        <member name="T:Ivony.Html.Binding.IHtmlBinder">
+            <summary>
+            定义 HTML 元素绑定器
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Binding.IHtmlBinder.BindElement(Ivony.Html.Binding.HtmlBindingContext,Ivony.Html.IHtmlElement)">
+            <summary>
+            HTML 元素绑定器，对元素执行一些特定的数据绑定操作
+            </summary>
+            <param name="context">数据绑定上下文</param>
+            <param name="element">要绑定的元素</param>
+            <returns>返回一个值，是否禁止后面的绑定器的执行</returns>
+        </member>
+        <member name="T:Ivony.Html.Binding.LiteralBinder">
+            <summary>
+            处理文本替换的绑定器
+            </summary>
+        </member>
+        <member name="F:Ivony.Html.Binding.LiteralBinder.literalNamespace">
+            <summary>
+            文本替换属性前缀
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Binding.LiteralBinder.BindElement(Ivony.Html.Binding.HtmlBindingContext,Ivony.Html.IHtmlElement)">
+            <summary>
+            绑定元素
+            </summary>
+            <param name="context">当前绑定上下文</param>
+            <param name="element">要绑定的元素</param>
+            <returns>永远返回 false，表示继续进行后面的绑定</returns>
+        </member>
+        <member name="T:Ivony.Html.Binding.ExpressionBinderCollection">
+            <summary>
+            定义表达式绑定器的容器
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Binding.ExpressionBinderCollection.#ctor">
+            <summary>
+            创建 ExpressionBinderCollection 对象
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Binding.ExpressionBinderCollection.#ctor(System.Collections.Generic.IEnumerable{Ivony.Html.Binding.IExpressionBinder})">
+            <summary>
+            创建 ExpressionBinderCollection 对象
+            </summary>
+            <param name="binders">要添加的绑定器</param>
+        </member>
+        <member name="M:Ivony.Html.Binding.ExpressionBinderCollection.GetKeyForItem(Ivony.Html.Binding.IExpressionBinder)">
+            <summary>
+            重写此方法从表达式绑定器对象中提取键
+            </summary>
+            <param name="item">要提取键（即可以处理的绑定表达式的名称）的表达式绑定器</param>
+            <returns>提取的键</returns>
+        </member>
+        <member name="T:Ivony.Html.Binding.HtmlBinding">
+            <summary>
+            为 HTML 绑定工作提供默认的元素绑定器，以及辅助创建数据绑定上下文和进行数据绑定
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Binding.HtmlBinding.RegisterBindingContextProvider(Ivony.Html.Binding.IHtmlBindingContextProvider)">
+            <summary>
+            注册一个绑定上下文提供程序
+            </summary>
+            <param name="provider">要注册的绑定上下文提供程序</param>
+        </member>
+        <member name="M:Ivony.Html.Binding.HtmlBinding.UnregisterBindingContextProvider(System.Type)">
+            <summary>
+            解除绑定上下文提供程序注册
+            </summary>
+            <param name="modelType">模型类型</param>
+        </member>
+        <member name="M:Ivony.Html.Binding.HtmlBinding.Create(Ivony.Html.IHtmlContainer,System.Object)">
+            <summary>
+            使用默认的绑定器设置创建 HtmlBindingContext 实例
+            </summary>
+            <param name="scope">要进行数据绑定的范畴</param>
+            <param name="dataModel">数据模型</param>
+        </member>
+        <member name="M:Ivony.Html.Binding.HtmlBinding.Create(Ivony.Html.IHtmlContainer,System.Object,System.Object[])">
+            <summary>
+            创建绑定上下文
+            </summary>
+            <param name="scope">要进行数据绑定的范围</param>
+            <param name="dataModel">数据模型</param>
+            <param name="binders">在这一次数据绑定中要用到的绑定器列表</param>
+            <returns>绑定上下文</returns>
+        </member>
+        <member name="M:Ivony.Html.Binding.HtmlBinding.DataBind(Ivony.Html.IHtmlContainer,System.Object)">
+            <summary>
+            使用默认的绑定器设置进行数据绑定
+            </summary>
+            <param name="scope">要进行数据绑定的范畴</param>
+            <param name="dataModel">数据模型</param>
+        </member>
+        <member name="M:Ivony.Html.Binding.HtmlBinding.DataBind(Ivony.Html.IHtmlContainer,System.Object,System.Object[])">
+            <summary>
+            使用指定的绑定器设置进行数据绑定
+            </summary>
+            <param name="scope">要进行数据绑定的范畴</param>
+            <param name="dataModel">数据模型</param>
+            <param name="binders">在这一次数据绑定中要用到的绑定器列表</param>
+        </member>
+        <member name="P:Ivony.Html.Binding.HtmlBinding.StyleBinder">
+            <summary>
+            获取样式绑定器
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Binding.HtmlBinding.LiteralBinder">
+            <summary>
+            获取文本绑定器
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Binding.HtmlBinding.ScriptBinder">
+            <summary>
+            获取脚本绑定器
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Binding.HtmlBinding.EvalExpressionBinder">
+            <summary>
+            获取默认的绑定表达式绑定器
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Binding.HtmlBinding.EvalListExpressionBinder">
+            <summary>
+            获取默认的列表绑定表达式绑定器
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Binding.HtmlBinding.HtmlBinders">
+            <summary>
+            获取或注册 HTML 绑定器
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Binding.HtmlBinding.ElementBinders">
+            <summary>
+            获取或注册特定元素的绑定器
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Binding.HtmlBinding.ExpressionBinders">
+            <summary>
+            获取或注册表达式绑定器
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Binding.HtmlBindingContext">
+            <summary>
+            绑定上下文
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Binding.HtmlBindingContext.Create(Ivony.Html.Binding.IHtmlBinder[],Ivony.Html.Binding.IHtmlElementBinder[],Ivony.Html.Binding.IExpressionBinder[],Ivony.Html.IHtmlContainer,System.Object)">
+            <summary>
+            创建 HtmlBindingContext 实例
+            </summary>
+            <param name="htmlBinders">要使用的 HTML 绑定器</param>
+            <param name="elementBinders">要使用的针对特定元素的 HTML 元素绑定器</param>
+            <param name="expressionBinders">要使用的绑定表达式绑定器</param>
+            <param name="scope">要进行数据绑定的范畴</param>
+            <param name="dataModel">数据上下文</param>
+        </member>
+        <member name="M:Ivony.Html.Binding.HtmlBindingContext.#ctor(Ivony.Html.Binding.HtmlBindingContext,Ivony.Html.IHtmlContainer,System.Object)">
+            <summary>
+            创建 HtmlBindingContext 实例
+            </summary>
+            <param name="scope">要进行数据绑定的范畴</param>
+            <param name="bindingContext">父级数据绑定上下文</param>
+            <param name="dataModel">数据模型，若不提供则使用当前的数据模型</param>
+        </member>
+        <member name="M:Ivony.Html.Binding.HtmlBindingContext.DataBind">
+            <summary>
+            进行数据绑定
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Binding.HtmlBindingContext.BindChilds(Ivony.Html.IHtmlContainer)">
+            <summary>
+            遍历绑定所有子元素
+            </summary>
+            <param name="container">要绑定子元素的容器</param>
+        </member>
+        <member name="M:Ivony.Html.Binding.HtmlBindingContext.CreateBindingContext(Ivony.Html.Binding.HtmlBindingContext,Ivony.Html.IHtmlElement,System.Object)">
+            <summary>
+            创建一个绑定上下文
+            </summary>
+            <param name="bindingContext">目前的绑定上下文</param>
+            <param name="element">目前正在进行绑定的元素</param>
+            <param name="dataModel">元素上绑定的数据对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ivony.Html.Binding.HtmlBindingContext.TryGetDataModel(Ivony.Html.IHtmlElement,System.Object@)">
+            <summary>
+            尝试获取数据模型
+            </summary>
+            <param name="element">当前正在处理的元素</param>
+            <param name="dataModel">获取到的数据模型</param>
+            <returns>是否成功获取数据模型</returns>
+        </member>
+        <member name="M:Ivony.Html.Binding.HtmlBindingContext.DataBind(Ivony.Html.IHtmlElement)">
+            <summary>
+            对元素进行数据绑定
+            </summary>
+            <param name="element">要绑定数据的元素</param>
+        </member>
+        <member name="M:Ivony.Html.Binding.HtmlBindingContext.TryBindElement(Ivony.Html.IHtmlElement)">
+            <summary>
+            尝试使用特定元素绑定器进行数据绑定
+            </summary>
+            <param name="element">要进行数据绑定的元素</param>
+            <returns>是否完成数据绑定</returns>
+        </member>
+        <member name="M:Ivony.Html.Binding.HtmlBindingContext.BindElement(Ivony.Html.IHtmlElement)">
+            <summary>
+            进行元素绑定
+            </summary>
+            <param name="element">要进行绑定的元素</param>
+        </member>
+        <member name="M:Ivony.Html.Binding.HtmlBindingContext.BindAttribute(Ivony.Html.IHtmlAttribute)">
+            <summary>
+            进行属性绑定
+            </summary>
+            <param name="attribute">要绑定的属性</param>
+        </member>
+        <member name="M:Ivony.Html.Binding.HtmlBindingContext.GetExpressionBinder(Ivony.Html.Binding.BindingExpression)">
+            <summary>
+            获取绑定表达式绑定器
+            </summary>
+            <param name="expression">绑定表达式</param>
+            <returns>绑定表达式绑定器</returns>
+        </member>
+        <member name="M:Ivony.Html.Binding.HtmlBindingContext.GetElementBinder(Ivony.Html.IHtmlElement)">
+            <summary>
+            获取用于特定元素的绑定器
+            </summary>
+            <param name="element">要进行数据绑定的元素</param>
+            <returns>元素绑定器</returns>
+        </member>
+        <member name="M:Ivony.Html.Binding.HtmlBindingContext.GetValue(Ivony.Html.Binding.BindingExpression)">
+            <summary>
+            获取绑定表达式的值
+            </summary>
+            <param name="expression">绑定表达式</param>
+            <returns>绑定值</returns>
+        </member>
+        <member name="M:Ivony.Html.Binding.HtmlBindingContext.TryGetValue(Ivony.Html.Binding.BindingExpression,System.Object@)">
+            <summary>
+            尝试获取绑定表达式的值
+            </summary>
+            <param name="expression">绑定表达式</param>
+            <param name="value">绑定值</param>
+            <returns>是否成功获取</returns>
+        </member>
+        <member name="M:Ivony.Html.Binding.HtmlBindingContext.TryConvertValue``1(System.Object,``0@)">
+            <summary>
+            尝试转换值类型
+            </summary>
+            <typeparam name="T">转换的目标类型</typeparam>
+            <param name="obj">要转换的值对象</param>
+            <param name="value">转换后的结果</param>
+            <returns>是否成功完成类型转换</returns>
+        </member>
+        <member name="P:Ivony.Html.Binding.HtmlBindingContext.ParentContext">
+            <summary>
+            父级绑定上下文
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Binding.HtmlBindingContext.BindingScope">
+            <summary>
+            进行绑定的范畴
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Binding.HtmlBindingContext.DataModel">
+            <summary>
+            当前的数据上下文
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Binding.HtmlBindingContext.Binders">
+            <summary>
+            元素绑定器
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Binding.HtmlBindingContext.ExpressionBinders">
+            <summary>
+            当前上下文可用于处理绑定表达式的绑定器
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Binding.HtmlBindingContext.ElementBinders">
+            <summary>
+            当前上下文用于处理特定元素的的绑定器
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Binding.HtmlBindingContext.BindCompleted">
+            <summary>
+            获取或设置一个值，指定元素绑定已经完成，无需遍历后面的绑定处理程序。
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Binding.HtmlBindingContext.CancelChildsBinding">
+            <summary>
+            获取或设置一个值，指定是否取消子元素的绑定。
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Binding.HtmlListBindingContext">
+            <summary>
+            进行列表绑定的绑定上下文
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Binding.HtmlListBindingContext.BindChilds(Ivony.Html.IHtmlContainer)">
+            <summary>
+            重写 BindChilds 方法，进行高级绑定。
+            </summary>
+        </member>
+        <member name="P:Ivony.Html.Binding.HtmlListBindingContext.DataModel">
+            <summary>
+            列表数据模型
+            </summary>
+        </member>
+        <member name="T:Ivony.Html.Binding.ListBindingMode">
+            <summary>
+            定义绑定模式
+            </summary>
+        </member>
+        <member name="F:Ivony.Html.Binding.ListBindingMode.StaticContent">
+            <summary>静态内容，无论数据项的多寡，绑定时仅绑定数据，而不对目标元素进行增删。</summary>
+        </member>
+        <member name="F:Ivony.Html.Binding.ListBindingMode.DynamicContent">
+            <summary>动态内容，根据数据项的多寡，对目标元素进行增删以匹配数据项</summary>
+        </member>
+        <member name="F:Ivony.Html.Binding.ListBindingMode.DisableGrowth">
+            <summary>动态内容，但是禁止增长，根据数据项的多寡，对目标元素进行删除以匹配数据项，但不增加目标元素</summary>
+        </member>
+        <member name="T:Ivony.Html.Binding.ScriptBinder">
+            <summary>
+            脚本绑定器，用于解析脚本中的绑定表达式。
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Binding.ScriptBinder.BindElement(Ivony.Html.Binding.HtmlBindingContext,Ivony.Html.IHtmlElement)">
+            <summary>
+            对 HTML 中的 script 元素进行绑定
+            </summary>
+            <param name="context">当前绑定上下文</param>
+            <param name="element">当前绑定的元素（仅会对 script 元素起作用）</param>
+            <returns>永远返回 false，表示其他绑定器可以继续执行</returns>
+        </member>
+        <member name="T:Ivony.Html.Binding.StyleBinder">
+            <summary>
+            默认的元素绑定器，处理 &lt;view&gt; 或者 &lt;binding&gt; 元素，以及属性绑定表达式和绑定属性处理。
+            </summary>
+        </member>
+        <member name="M:Ivony.Html.Binding.StyleBinder.BindElement(Ivony.Html.Binding.HtmlBindingContext,Ivony.Html.IHtmlElement)">
+            <summary>
+            对元素进行数据绑定
+            </summary>
+            <param name="element">需要绑定数据的元素</param>
+            <param name="context">绑定上下文</param>
+            <returns>返回是否对元素进行了不可逆转的操作（例如移除），故而禁止后续的绑定操作</returns>
+        </member>
+        <member name="M:Ivony.Html.Binding.StyleBinder.BindElementStyles(Ivony.Html.IHtmlElement,Ivony.Html.IHtmlAttribute[])">
+            <summary>
+            绑定元素样式
+            </summary>
+            <param name="element">要处理的元素</param>
+            <param name="styleAttributes">样式属性</param>
+        </member>
+        <member name="M:Ivony.Html.Binding.StyleBinder.BindElementClasses(Ivony.Html.IHtmlElement,Ivony.Html.IHtmlAttribute[])">
+            <summary>
+            绑定元素样式类
+            </summary>
+            <param name="element">要处理的元素</param>
+            <param name="classAttributes">样式类属性</param>
+        </member>
+    </members>
+</doc>

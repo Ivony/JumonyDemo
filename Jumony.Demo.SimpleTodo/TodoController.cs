@@ -18,7 +18,7 @@ namespace Jumony.Demo.SimpleTodo
 
 
 
-    private SqlDbUtility dbUtility = SqlDbUtility.Create( "Database" );
+    private Ivony.Data.SqlClient.SqlDbExecutor dbUtility = SqlServer.FromConfiguration( "Database" );
 
     public async Task<ActionResult> Index()
     {

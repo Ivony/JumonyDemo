@@ -30,48 +30,48 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DbUtility.v3">
-      <HintPath>..\packages\DbUtility3.3.2\lib\net45\DbUtility.v3.dll</HintPath>
+    <Reference Include="DbWrench">
+      <HintPath>..\packages\DbWrench.4.4.2\lib\net45\DbWrench.dll</HintPath>
     </Reference>
     <Reference Include="Ivony.Core, Version=2.0.5161.26613, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Ivony.Core.1.1.0\lib\Ivony.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Ivony.Html, Version=3.0.5247.28003, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Ivony.Html, Version=3.0.12.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Jumony.Core.3.0.11\lib\Ivony.Html.dll</HintPath>
+      <HintPath>..\packages\Jumony.Core.3.0.15\lib\Ivony.Html.dll</HintPath>
     </Reference>
-    <Reference Include="Ivony.Html.Binding, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Ivony.Html.Binding, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Jumony.Models.3.0.1\lib\Ivony.Html.Binding.dll</HintPath>
+      <HintPath>..\packages\Jumony.Models.3.1.1\lib\Ivony.Html.Binding.dll</HintPath>
     </Reference>
-    <Reference Include="Ivony.Html.Forms, Version=2.0.5245.30120, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Ivony.Html.Forms, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Jumony.Models.3.0.1\lib\Ivony.Html.Forms.dll</HintPath>
+      <HintPath>..\packages\Jumony.Models.3.1.1\lib\Ivony.Html.Forms.dll</HintPath>
     </Reference>
-    <Reference Include="Ivony.Html.Parser, Version=3.0.5247.28007, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Ivony.Html.Parser, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Jumony.Core.3.0.11\lib\Ivony.Html.Parser.dll</HintPath>
+      <HintPath>..\packages\Jumony.Core.3.0.15\lib\Ivony.Html.Parser.dll</HintPath>
     </Reference>
     <Reference Include="Ivony.Html.Parser.Regulars, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Jumony.Core.3.0.11\lib\Ivony.Html.Parser.Regulars.dll</HintPath>
+      <HintPath>..\packages\Jumony.Core.3.0.15\lib\Ivony.Html.Parser.Regulars.dll</HintPath>
     </Reference>
-    <Reference Include="Ivony.Html.Web, Version=3.1.5247.28007, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Ivony.Html.Web, Version=3.1.5265.22464, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Jumony.Web.3.1.10-alpha\lib\Ivony.Html.Web.dll</HintPath>
+      <HintPath>..\packages\Jumony.Web.3.1.11.2\lib\Ivony.Html.Web.dll</HintPath>
     </Reference>
-    <Reference Include="Ivony.Html.Web.Mvc, Version=3.1.5247.28007, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Ivony.Html.Web.Mvc, Version=3.1.5265.22464, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Jumony.Web.3.1.10-alpha\lib\Ivony.Html.Web.Mvc.dll</HintPath>
+      <HintPath>..\packages\Jumony.Web.3.1.11.2\lib\Ivony.Html.Web.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="Ivony.Web, Version=1.1.5245.30119, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Ivony.Web, Version=1.1.5265.22461, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Ivony.Web.1.3\lib\Ivony.Web.dll</HintPath>
+      <HintPath>..\packages\Ivony.Web.1.3.1\lib\Ivony.Web.dll</HintPath>
     </Reference>
     <Reference Include="Ivony.Web.Mvc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Ivony.Web.Mvc.1.0.2\lib\net40\Ivony.Web.Mvc.dll</HintPath>
+      <HintPath>..\packages\Ivony.Web.Mvc.1.0.2.1\lib\net40\Ivony.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
